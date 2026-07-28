@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 export default function AddToCartButton() {
   return (
-    <div className="flex flex-col space-y-3">
+    <div className="flex flex-col space-y-3 md:flex-row md:items-center md:space-x-3">
       <div 
-        className="relative text-center font-bold py-4 px-3 bg-light-grayish-blue rounded-lg"
+        className="relative text-center font-bold py-4 px-3 bg-light-grayish-blue rounded-lg md:flex-2 md:py-3 md:mt-3"
       >
         <Image 
           className="absolute left-5 top-1/2 -translate-y-1/2 cursor-pointer"
@@ -24,7 +24,7 @@ export default function AddToCartButton() {
         0
       </div>
       <button
-        className="flex justify-center items-center font-semibold bg-primary py-4 px-3 rounded-lg shadow-xl shadow-primary/40 cursor-pointer"
+        className="flex justify-center items-center font-semibold bg-primary py-4 px-3 rounded-lg shadow-xl shadow-primary/40 cursor-pointer md:shadow-none md:flex-3 md:py-3"
       >
         <Image 
           className="mr-3 brightness-50"
