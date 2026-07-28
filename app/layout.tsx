@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Kumbh_Sans } from "next/font/google";
+
+import Navbar from '@/components/Navbar';
 import "./globals.css";
 
 const kumbhSans = Kumbh_Sans({
@@ -23,7 +25,12 @@ export default function RootLayout({
       lang="en"
       className={`${kumbhSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body>
+        <div className="w-full min-h-screen md:max-w-[1440px] md:mx-auto">
+          <Navbar />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
