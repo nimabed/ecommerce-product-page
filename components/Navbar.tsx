@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuButton from './mobile-menu/MenuButton';
-import CartButton from './CartButton';
+import CartButton from './cart/CartButton';
+import CartModal from './cart/CartModal';
 
 export default function Navbar() {
   return (
@@ -13,17 +14,39 @@ export default function Navbar() {
         </Link>
         <nav className="hidden ml-10 md:block">
           <ul className="flex space-x-8 items-center text-dark-grayish-blue">
-            <li><Link href='/collections'>Collections</Link></li>
-            <li><Link href='/products/men'>Men</Link></li>
-            <li><Link href='/products/women'>Women</Link></li>
-            <li><Link href='/about'>About</Link></li>
-            <li><Link href='/contact'>Contact</Link></li>
+            <li 
+              className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+            >
+              <Link href='/collections'>Collections</Link>
+            </li>
+            <li
+              className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+            >
+              <Link href='/products/men'>Men</Link>
+            </li>
+            <li 
+              className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+            >
+              <Link href='/products/women'>Women</Link>
+            </li>
+            <li 
+              className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+            >
+              <Link href='/about'>About</Link>
+            </li>
+            <li 
+              className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+            >
+              <Link href='/contact'>Contact</Link>
+            </li>
           </ul>
         </nav>
       </div>
       <div className="flex items-center space-x-5 md:space-x-10 md:pr-3">
-        <CartButton />
-        <Image className="cursor-pointer md:scale-200 md:ml-5" src='/image-avatar.png' alt='profile avatar image' width={25} height={25} />
+        <CartButton>
+          <CartModal />
+        </CartButton>
+        <Image className="cursor-pointer ring rounded-full hover:ring-primary md:scale-200 md:ml-5" src='/image-avatar.png' alt='profile avatar image' width={25} height={25} />
       </div>
     </header>
   )

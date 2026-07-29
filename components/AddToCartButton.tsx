@@ -7,14 +7,14 @@ export default function AddToCartButton() {
         className="relative text-center font-bold py-4 px-3 bg-light-grayish-blue rounded-lg md:flex-2 md:mt-3"
       >
         <Image 
-          className="absolute left-5 top-1/2 -translate-y-1/2 cursor-pointer"
+          className="absolute left-5 top-1/2 -translate-y-1/2 cursor-pointer hover:brightness-150"
           src='/icon-minus.svg' 
           alt='icon minus image'
           width={12}
           height={12}
         />
         <Image 
-          className="absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer"
+          className="absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer hover:brightness-150"
           src='/icon-plus.svg' 
           alt='icon plus image'
           width={12}
@@ -24,7 +24,7 @@ export default function AddToCartButton() {
         0
       </div>
       <button
-        className="flex justify-center items-center font-semibold bg-primary py-4 px-3 rounded-lg shadow-xl shadow-primary/40 cursor-pointer md:shadow-none md:flex-3"
+        className="flex justify-center items-center font-semibold bg-primary py-4 px-3 rounded-lg shadow-xl shadow-primary/40 cursor-pointer hover:bg-primary/70 md:shadow-none md:flex-3"
       >
         <Image 
           className="mr-3 brightness-50"

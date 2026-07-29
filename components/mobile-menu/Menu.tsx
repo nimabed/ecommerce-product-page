@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Menu({ onClose }: { onClose: () => void }) {
   return (
-    <div className="fixed z-10 top-0 bottom-0 left-0 w-full bg-black/50 md:hidden">
+    <div className="fixed left-0 top-0 bottom-0 w-full max-w-[375px] bg-black/50 z-10 md:hidden">
       <div className="w-[60%] h-full p-5 bg-white">
         <button 
           className="mb-9 cursor-pointer"
