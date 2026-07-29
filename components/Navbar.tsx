@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuButton from './mobile-menu/MenuButton';
+import CartButton from './CartButton';
 
 export default function Navbar() {
   return (
@@ -21,7 +22,7 @@ export default function Navbar() {
         </nav>
       </div>
       <div className="flex items-center space-x-5 md:space-x-10 md:pr-3">
-        <Image className="cursor-pointer md:mt-1" src='/icon-cart.svg' alt='cart image' width={23} height={23} />
+        <CartButton />
         <Image className="cursor-pointer md:scale-200 md:ml-5" src='/image-avatar.png' alt='profile avatar image' width={25} height={25} />
       </div>
     </header>

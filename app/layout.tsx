@@ -26,7 +26,7 @@ export default function RootLayout({
       className={`${kumbhSans.variable} h-full antialiased`}
     >
       <body>
-        <div className="w-full min-h-screen max-w-[375px] md:max-w-[1440px] md:mx-auto">
+        <div className="relative flex flex-col w-full h-screen max-w-[375px] md:max-w-[1440px] md:mx-auto">
           <Navbar />
           {children}
         </div>
