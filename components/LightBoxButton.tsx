@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 import Modal from './Modal';
 
@@ -8,17 +8,37 @@ export default function LightBoxButton({ children }: {
   children: React.ReactNode;
 }) {
 
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  useEffect(() => {
+
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    function handleCloseModal() {
+      setModalIsOpen(false);
+    }
+
+
+    mediaQuery.addEventListener("change", handleCloseModal);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleCloseModal);
+    }
+
+  }, [])
+
+
 
   return (
     <>
-      <Modal ref={dialogRef}>
+      <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
         {children}
       </Modal>
 
       <button 
-        onClick={() => dialogRef.current?.showModal()}
-        className="hidden absolute inset-0 cursor-pointer z-4 md:block"
+        onClick={() => setModalIsOpen(true)}
+        className="hidden absolute inset-0 cursor-pointer md:block"
+        disabled={modalIsOpen}
       >
       </button>
     </>

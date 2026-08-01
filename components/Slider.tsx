@@ -8,7 +8,7 @@ import LightBox from './LightBox';
 export default function Slider() {
   return (
     <>
-      <div className="relative h-[300px] md:h-[500px] md:cursor-pointer">
+      <div className="relative h-[300px] md:h-[500px]">
 
         <Image 
           className="object-cover md:rounded-xl"

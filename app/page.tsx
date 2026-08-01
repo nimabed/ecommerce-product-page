@@ -29,8 +29,6 @@ export default function ProductPage() {
           </div>
           <AddToCartButton />
         </article>
-        
-      
       </main>
     </>
   );
