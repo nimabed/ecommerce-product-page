@@ -1,21 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import Modal from './Modal';
 
-export default function LightBoxButton({ children }: {
-  children: React.ReactNode;
+export default function LightBoxButton({ children, isOpen, openModal, closeModal }: {
+  children: React.ReactNode,
+  isOpen: boolean,
+  openModal: () => void,
+  closeModal: () => void
 }) {
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
 
     const mediaQuery = window.matchMedia("(max-width: 768px)");
 
     function handleCloseModal() {
-      setModalIsOpen(false);
+      closeModal();
     }
 
 
@@ -25,20 +27,20 @@ export default function LightBoxButton({ children }: {
       mediaQuery.removeEventListener("change", handleCloseModal);
     }
 
-  }, [])
+  }, [closeModal])
 
 
 
   return (
     <>
-      <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+      <Modal isOpen={isOpen} onClose={closeModal}>
         {children}
       </Modal>
 
       <button 
-        onClick={() => setModalIsOpen(true)}
+        onClick={openModal}
         className="hidden absolute inset-0 cursor-pointer md:block"
-        disabled={modalIsOpen}
+        disabled={isOpen}
       >
       </button>
     </>

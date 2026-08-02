@@ -19,7 +19,7 @@ export default function Modal({ children, isOpen, onClose }: {
     <dialog 
       onClose={onClose}
       ref={dialogRef}
-      className="open:block size-full bg-transparent cursor-default backdrop:bg-black/80"
+      className="size-full bg-transparent cursor-default backdrop:bg-black/80"
     >
       {children}
     </dialog>
