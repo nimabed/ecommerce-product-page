@@ -7,49 +7,32 @@ import LightBoxButton from './LightBoxButton';
 import LightBox from './LightBox';
 
 
-const sliderImages = [
-  {
-    src: "/image-product-1.jpg", 
-    alt: "shoes image one",
-    thumbnail: "/image-product-1-thumbnail.jpg"
-  },
-  {
-    src: "/image-product-2.jpg", 
-    alt: "shoes image two",
-    thumbnail: "/image-product-2-thumbnail.jpg"
-  },
-  {
-    src: "/image-product-3.jpg", 
-    alt: "shoes image three",
-    thumbnail: "/image-product-3-thumbnail.jpg"
-  },
-  {
-    src: "/image-product-4.jpg", 
-    alt: "shoes image four",
-    thumbnail: "/image-product-4-thumbnail.jpg"
-  }
-]
+type images = {src: string, alt: string, thumbnail: string}[];
 
 
-export default function Slider() {
+export default function Slider({ sliderImages }:{
+  sliderImages: images
+}
+) {
 
   const [currentActiveIndex, setCurrentActiveIndex] = useState(1);
   const [isModalActive, setIsModalActive] = useState(false);
 
   const handleNextImage = () => {
-    if(currentActiveIndex < sliderImages.length - 1) {
-      setCurrentActiveIndex(pervState => pervState + 1);
-    }
+    const isLast = currentActiveIndex === sliderImages.length - 1;
+    const index = isLast ? 0 : currentActiveIndex + 1;
+    setCurrentActiveIndex(index);
   }
 
   const handlePreviousImage = () => {
-    if(currentActiveIndex > 0) {
-      setCurrentActiveIndex(pervState => pervState - 1);
-    }
+    const isFirst = currentActiveIndex === 0;
+    const index = isFirst ? sliderImages.length - 1 : currentActiveIndex - 1;
+    setCurrentActiveIndex(index);
+    
   }
 
   return (
-    <>
+    <section className="w-full md:max-w-[70%]">
       <div className="relative h-[300px] md:h-[500px]">
         <Image 
           className="object-cover md:rounded-xl"
@@ -92,14 +75,14 @@ export default function Slider() {
         </button>
       </div>
       <ul className="hidden flex-row justify-between mt-7 md:flex">
-          {
-            sliderImages.map(
-              (imageItem, imageIndex) => {
+        {
+          sliderImages.map(
+            (imageItem, imageIndex) => {
 
-                const activeClass = "bg-white/75 opacity-100 ring-3 ring-primary/80";
-                const notActiveClass = "bg-white/50 opacity-0 group-hover:opacity-100";
+              const activeClass = "bg-white/75 opacity-100 ring-3 ring-primary/80";
+              const notActiveClass = "bg-white/50 opacity-0 group-hover:opacity-100";
 
-                return (
+              return (
                 <li key={imageIndex}>
                   <button 
                     className="group relative w-25 h-22 cursor-pointer"
@@ -114,11 +97,11 @@ export default function Slider() {
                     <div className={`absolute inset-0 rounded-lg ${imageIndex === currentActiveIndex ? activeClass : notActiveClass }`} />
                   </button>
                 </li>
-                )
-              }
-            )
-          }
+              )
+            }
+          )
+        }
       </ul>
-    </>
+    </section>
   )
 }

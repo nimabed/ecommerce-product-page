@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Kumbh_Sans } from "next/font/google";
 
+import CartContextProvider from '@/store/cart-context';
 import Navbar from '@/components/Navbar';
 import "./globals.css";
 
@@ -26,10 +27,12 @@ export default function RootLayout({
       className={`${kumbhSans.variable} h-full antialiased`}
     >
       <body>
-        <div className="relative flex flex-col w-full h-screen max-w-[375px] md:max-w-[1440px] md:mx-auto">
-          <Navbar />
-          {children}
-        </div>
+        <CartContextProvider>
+          <div className="relative flex flex-col w-full h-screen max-w-[375px] md:max-w-[1440px] md:mx-auto">
+            <Navbar />
+            {children}
+          </div>
+        </CartContextProvider>
       </body>
     </html>
   );

@@ -13,15 +13,16 @@ export default function LightBox({ sliderImages, activeId, closeModal }: {
   const [currentActiveIndex, setCurrentActiveIndex] = useState(activeId);
 
   const handleNextImage = () => {
-    if(currentActiveIndex < sliderImages.length - 1) {
-      setCurrentActiveIndex(pervState => pervState + 1);
-    }
+    const isLast = currentActiveIndex === sliderImages.length - 1;
+    const index = isLast ? 0 : currentActiveIndex + 1;
+    setCurrentActiveIndex(index);
   }
 
   const handlePreviousImage = () => {
-    if(currentActiveIndex > 0) {
-      setCurrentActiveIndex(pervState => pervState - 1);
-    }
+    const isFirst = currentActiveIndex === 0;
+    const index = isFirst ? sliderImages.length - 1 : currentActiveIndex - 1;
+    setCurrentActiveIndex(index);
+    
   }
 
   return (
