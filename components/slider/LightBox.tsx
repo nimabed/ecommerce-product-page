@@ -55,7 +55,7 @@ export default function LightBox({ sliderImages, activeId, closeModal }: {
         </button>
       </div>
 
-      <ul className="flex flex-row justify-between space-x-8 mt-3">
+      <ul className="w-full max-w-[90%] flex flex-row mt-3">
         {
           sliderImages.map(
             (imageItem, imageIndex) => {
@@ -64,9 +64,9 @@ export default function LightBox({ sliderImages, activeId, closeModal }: {
               const notActiveClass = "bg-white/50 opacity-0 group-hover:opacity-100";
 
               return (
-              <li key={imageIndex}>
+              <li className="w-full" key={imageIndex}>
                 <button 
-                  className="group relative w-20 h-20 cursor-pointer"
+                  className="group relative w-full max-w-23 h-23 left-1/2 -translate-x-1/2 cursor-pointer"
                   onClick={() => setCurrentActiveIndex(imageIndex)}
                 >
                   <Image 

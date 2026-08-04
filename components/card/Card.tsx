@@ -1,6 +1,20 @@
 import AddToCartButton from './AddToCartButton';
 
-export default function Card({ product }) {
+type product = {
+  id: string,
+  company: string,
+  title: string,
+  price: number,
+  discount: number,
+  description: string,
+  thumbnail: string
+}
+
+type cardProductProp = {
+  product: product
+}
+
+export default function Card({ product }: cardProductProp) {
   return (
     <article className="w-full p-6 md:p-0 md:max-w-[70%]">
       <div className="flex flex-col space-y-4 md:space-y-6">

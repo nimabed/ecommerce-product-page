@@ -12,8 +12,7 @@ export default function CartItem() {
     removeFromCart(items[0].id)
   }
 
-
-
+  
   if(items.length === 0) {
     return (
       <span className="font-semibold text-dark-grayish-blue">Your cart is empty.</span>

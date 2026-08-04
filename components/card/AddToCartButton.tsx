@@ -1,11 +1,25 @@
 'use client';
+
 import { useState } from 'react';
 import Image from 'next/image';
 import { Plus, Minus } from 'lucide-react';
-
 import { useCart } from '@/store/cart-context';
 
-export default function AddToCartButton({ product }) {
+type product = {
+  id: string,
+  company: string,
+  title: string,
+  price: number,
+  discount: number,
+  description: string,
+  thumbnail: string
+}
+
+type cardProductProp = {
+  product: product
+}
+
+export default function AddToCartButton({ product }: cardProductProp) {
 
   const [quantity, setQuantity] = useState(0);
 

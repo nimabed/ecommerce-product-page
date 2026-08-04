@@ -74,7 +74,7 @@ export default function Slider({ sliderImages }:{
           />
         </button>
       </div>
-      <ul className="hidden flex-row justify-between mt-7 md:flex">
+      <ul className="hidden flex-row space-x-7 mt-7  md:flex">
         {
           sliderImages.map(
             (imageItem, imageIndex) => {
@@ -83,9 +83,9 @@ export default function Slider({ sliderImages }:{
               const notActiveClass = "bg-white/50 opacity-0 group-hover:opacity-100";
 
               return (
-                <li key={imageIndex}>
+                <li className="w-full" key={imageIndex}>
                   <button 
-                    className="group relative w-25 h-22 cursor-pointer"
+                    className="group relative w-full h-22 cursor-pointer"
                     onClick={() => setCurrentActiveIndex(imageIndex)}
                   >
                     <Image 
