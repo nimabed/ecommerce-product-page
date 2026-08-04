@@ -24,7 +24,7 @@ export default function LightBoxButton({ children, isOpen, openModal, closeModal
     mediaQuery.addEventListener("change", handleCloseModal);
 
     return () => {
-      mediaQuery.removeEventListener("change", handleCloseModal);
+     mediaQuery.removeEventListener("change", handleCloseModal);
     }
 
   }, [closeModal])

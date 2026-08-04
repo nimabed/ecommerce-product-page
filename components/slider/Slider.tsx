@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Image from "next/image";
 
 import LightBoxButton from './LightBoxButton';
@@ -27,9 +27,13 @@ export default function Slider({ sliderImages }:{
   const handlePreviousImage = () => {
     const isFirst = currentActiveIndex === 0;
     const index = isFirst ? sliderImages.length - 1 : currentActiveIndex - 1;
-    setCurrentActiveIndex(index);
-    
+    setCurrentActiveIndex(index); 
   }
+
+  const handleCloseModal = useCallback(() => {
+    setIsModalActive(false);
+  }, [])
+
 
   return (
     <section className="w-full md:max-w-[70%]">
@@ -45,7 +49,7 @@ export default function Slider({ sliderImages }:{
           key={currentActiveIndex} 
           isOpen={isModalActive} 
           openModal={() => setIsModalActive(true)}
-          closeModal={() => setIsModalActive(false)}
+          closeModal={handleCloseModal}
         >
           <LightBox sliderImages={sliderImages} activeId={currentActiveIndex} closeModal={() => setIsModalActive(false)} />
         </LightBoxButton>

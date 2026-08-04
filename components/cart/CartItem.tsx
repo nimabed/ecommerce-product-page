@@ -8,17 +8,17 @@ export default function CartItem() {
 
   const { items, removeFromCart } = useCart();
 
+  const priceWithDiscount = (items[0].price * (items[0].discount/100)).toFixed(2);
+
   function handleRemoveItem() {
     removeFromCart(items[0].id)
   }
 
-  
   if(items.length === 0) {
     return (
       <span className="font-semibold text-dark-grayish-blue">Your cart is empty.</span>
     )
   }
-
 
   return (
     <div className="size-full max-w-[90%] max-h-[85%] flex flex-col justify-center">
@@ -32,7 +32,7 @@ export default function CartItem() {
         />
         <div>
           <p className="text-dark-grayish-blue mb-1">{items[0].title}</p>
-          <p className="text-dark-grayish-blue">{`$${(items[0].price * (items[0].discount/100)).toFixed(2)}x`}<span className="mx-1">{items[0].quantity}</span><span className="text-black font-semibold">{`$${(items[0].price * items[0].quantity).toFixed(2)}`}</span></p>
+          <p className="text-dark-grayish-blue">{`$${priceWithDiscount}x`}<span className="mx-1">{items[0].quantity}</span><span className="text-black font-semibold">{`$${(Number(priceWithDiscount) * items[0].quantity).toFixed(2)}`}</span></p>
         </div>
         <button 
           className="group cursor-pointer"
