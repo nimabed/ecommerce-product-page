@@ -8,7 +8,7 @@ export default function CartItem() {
 
   const { items, removeFromCart } = useCart();
 
-  const priceWithDiscount = (items[0].price * (items[0].discount/100)).toFixed(2);
+  const priceWithDiscount = (items[0]?.price * (items[0]?.discount/100)).toFixed(2);
 
   function handleRemoveItem() {
     removeFromCart(items[0].id)
