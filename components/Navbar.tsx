@@ -6,7 +6,7 @@ import CartModal from './cart/CartModal';
 
 export default function Navbar() {
   return (
-    <header className="sticky md:static">
+    <header>
       <div className="flex justify-between p-6 w-full md:py-8 md:px-0">
         <div className="flex items-center space-x-3">
           <MenuButton />
