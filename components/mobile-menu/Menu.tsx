@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Menu({ onClose }: { onClose: () => void }) {
+export default function Menu({ onParentClose, onChildClose }: { onParentClose: (e: React.MouseEvent) => void, onChildClose: (e: React.MouseEvent) => void }) {
   return (
-    <div className="fixed left-0 top-0 bottom-0 w-full max-w-[375px] bg-black/50 z-10 md:hidden">
+    <div className="absolute inset-0 w-full bg-black/50 z-10 md:hidden" onClick={onParentClose}>
       <div className="w-[60%] h-full p-5 bg-white">
         <button 
           className="mb-9 cursor-pointer"
-          onClick={onClose}
+          onClick={onChildClose}
         >
           <Image src='/icon-close.svg' alt='close icon image' width={13} height={13} />
         </button>

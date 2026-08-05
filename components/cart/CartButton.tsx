@@ -15,19 +15,18 @@ export default function CartButton({ children }: {
   return (
     <>
       <button 
-        className="relative cursor-pointer" 
+        className="size-4.5 relative cursor-pointer md:size-5" 
         onClick={() => setCartIsActive(pervState => !pervState)}
       >
         <Image 
           className="md:mt-1" 
           src='/icon-cart.svg' 
           alt='cart image' 
-          width={23} 
-          height={23} 
+          fill 
         />
         {totalQuantity > 0 && (
           <span 
-          className="absolute -right-[5px] -top-1 px-2 text-[9px] font-semibold text-white rounded-full bg-primary scale-95 md:scale-100"
+          className="absolute -right-1.25 -top-2 px-2 text-[9px] font-semibold text-white rounded-full bg-primary scale-90 md:-top-1 md:scale-100"
         >
           {totalQuantity}
         </span>)}
