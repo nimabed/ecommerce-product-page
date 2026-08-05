@@ -28,7 +28,7 @@ export default function RootLayout({
     >
       <body>
         <CartContextProvider>
-          <div className="relative flex flex-col w-full h-screen md:max-w-360 md:mx-auto">
+          <div className="relative flex flex-col w-full min-h-screen md:h-screen md:max-w-360 md:mx-auto">
             <Navbar />
             {children}
           </div>
