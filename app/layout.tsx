@@ -6,7 +6,6 @@ import Navbar from '@/components/Navbar';
 import "./globals.css";
 
 const kumbhSans = Kumbh_Sans({
-  variable: "--font-kumbg-sans",
   subsets: ["latin"]
 })
 
@@ -24,7 +23,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${kumbhSans.variable} h-full antialiased`}
+      className={`${kumbhSans.className} h-full antialiased`}
     >
       <body>
         <CartContextProvider>
