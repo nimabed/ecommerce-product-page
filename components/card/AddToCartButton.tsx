@@ -62,14 +62,14 @@ export default function AddToCartButton({ product }: cardProductProp) {
           className="group p-1 cursor-pointer"
           onClick={handleDecreaseQuantity}
         >
-          <Minus strokeWidth={4} className="size-5 text-primary group-hover:text-primary/60" />
+          <Minus strokeWidth={4} className="size-5 text-primary group-hover:text-primary/50" />
         </button>
         <span className="font-bold">{quantity}</span>
         <button 
           className="group p-1 cursor-pointer"
           onClick={handleIncreaseQuantity}
         >
-          <Plus strokeWidth={4} className="size-5 text-primary group-hover:text-primary/60" />
+          <Plus strokeWidth={4} className="size-5 text-primary group-hover:text-primary/50" />
         </button>
       </div>
       <button

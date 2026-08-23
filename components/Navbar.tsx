@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Search } from 'lucide-react';
 import MenuButton from './mobile-menu/MenuButton';
 import CartButton from './cart/CartButton';
 import CartModal from './cart/CartModal';
@@ -9,10 +10,13 @@ export default function Navbar() {
     <header>
       <div className="flex justify-between p-6 w-full md:py-8 md:px-0">
         <div className="flex items-center space-x-3">
+          {/* Mobile Menu Button */}
           <MenuButton />
+          {/* Logo */}
           <Link href='/'>
             <Image src='/logo.svg' alt='logo image' width={140} height={140} />
           </Link>
+          {/* Nav Links */}
           <nav className="hidden ml-10 md:block">
             <ul className="flex space-x-8 items-center text-dark-grayish-blue">
               <li 
@@ -43,11 +47,18 @@ export default function Navbar() {
             </ul>
           </nav>
         </div>
-        <div className="flex items-center space-x-5 md:space-x-10 md:pr-3">
+        {/* Icons */}
+        <div className="flex items-center gap-5 md:gap-9 md:pr-3">
+          {/* Search Button */}
+          <button className="cursor-pointer">
+            <Search className="size-5 text-dark-grayish-blue md:size-5.5" />
+          </button>
+          {/* Cart Button */}
           <CartButton>
             <CartModal />
           </CartButton>
-          <Image className="cursor-pointer ring rounded-full hover:ring-primary md:scale-200 md:ml-5" src='/image-avatar.png' alt='profile avatar image' width={25} height={25} />
+          {/* Profile Button */}
+          <Image className="cursor-pointer ring rounded-full hover:ring-primary md:scale-200 md:ml-4" src='/image-avatar.png' alt='profile avatar image' width={25} height={25} />
         </div>
       </div>
       <div className="hidden w-full h-[2px] bg-dark-grayish-blue/10 mt-4 rounded-full md:block" /> 
