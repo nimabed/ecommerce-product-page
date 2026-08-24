@@ -13,7 +13,7 @@
   --color-light-grayish-blue: hsl(223, 64%, 98%);
 }
 
-@theme inline {
+/* @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -135,4 +135,4 @@
   html {
     @apply font-sans;
   }
-}
+} */

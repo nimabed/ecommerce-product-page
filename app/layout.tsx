@@ -26,11 +26,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", kumbhSans.className, "font-sans", geist.variable)}
+      className={cn("h-full", "antialiased", kumbhSans.className)}
     >
       <body>
         <CartContextProvider>
-          <div className="relative flex flex-col w-full min-h-screen md:h-screen md:max-w-360 md:mx-auto">
+          <div className="flex flex-col min-h-screen md:h-screen">
             <Navbar />
             {children}
           </div>
