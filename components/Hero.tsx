@@ -1,33 +1,84 @@
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+'use client';
+import { useState, useEffect, useCallback } from 'react';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Ellipse } from 'lucide-react';
 import Container from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
+import hero1_desktop from '@/assets/images/image-hero-1-desktop.jpeg';
+import hero1_mobile from '@/assets/images/image-hero-1-mobile.png';
+import hero2_desktop from '@/assets/images/image-hero-2-desktop.png';
+import hero2_mobile from '@/assets/images/image-hero-2-mobile.png';
+import hero3_desktop from '@/assets/images/image-hero-3-desktop.jpeg';
+import hero3_mobile from '@/assets/images/image-hero-3-mobile.jpeg';
 
 const images = [
   {
-    desktopSrc: "/image-hero-1-desktop.jpeg",
-    mobileSrc: "/image-hero-1-mobile.png",
+    desktopSrc: hero1_desktop,
+    mobileSrc: hero1_mobile,
     alt: "Hero image one"
   },
   {
-    desktopSrc: "/image-hero-2-desktop.png",
-    mobileSrc: "/image-hero-2-mobile.png",
+    desktopSrc: hero2_desktop,
+    mobileSrc: hero2_mobile,
     alt: "Hero image two"
   },
   {
-    desktopSrc: "/image-hero-3-desktop.jpeg",
-    mobileSrc: "/image-hero-3-mobile.jpeg",
+    desktopSrc: hero3_desktop,
+    mobileSrc: hero3_mobile,
     alt: "Hero image three"
   }
 ]
 
 
-
 export default function Hero() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  const count = api?.scrollSnapList() ?? [];
+
+  const apiInit = useCallback((newApi: CarouselApi) => {
+    setApi(newApi);
+    setCurrent(newApi?.selectedScrollSnap() ?? 0)
+  }, [])
+
+  const onSelect = useCallback(() => {
+    if(!api) return;
+    setCurrent(api?.selectedScrollSnap() ?? 0);
+  }, [api])
+
+
+  const stopCarousel = () => {
+    api?.plugins().autoplay?.stop();
+  }
+  
+  const resetCarousel = () => {
+    api?.plugins().autoplay?.play();
+  }
+  
+  useEffect(() => {
+    if(!api) return;
+
+    api.on("select", onSelect);
+
+    return () => {
+      api.off("select", onSelect)
+    }
+
+  }, [api, onSelect])
+
+
+
   return (
-    <Carousel className="w-full">
+    <Carousel 
+      setApi={apiInit}
+      className="relative w-full"
+      plugins= {[Autoplay({delay: 4000})]}
+      onMouseEnter={stopCarousel}
+      onMouseLeave={resetCarousel}
+    >
       <CarouselContent>
         {
           images.map((image, index) => {
@@ -49,7 +100,7 @@ export default function Hero() {
                     fill 
                   />
 
-                  <div className="absolute inset-0 bg-white/20">
+                  {/* <div className="absolute inset-0 bg-white/20">
                     <Container className="space-y-3 py-6">
                       <h2 className="uppercase font-bold text-primary tracking-wide">New Season</h2>
                       <p className="text-3xl font-extrabold max-w-[70%]">Step Into Something New</p>
@@ -65,16 +116,28 @@ export default function Hero() {
                         </Button>
                       </div>
                     </Container>
-                  </div>
-
-
-
+                  </div> */}
                 </div>
               </CarouselItem>)
             }
           )
         }
       </CarouselContent>
+
+      {/* Carousel Buttons */}
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-10 space-x-1 z-10">
+        {
+          count.map((_, index) => 
+              <Button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={cn("w-5 h-3 rounded-full cursor-pointer p-0 bg-transparent",
+                  current === index ? "bg-primary" : "bg-light-grayish-blue"
+                )}
+              />
+          )
+        }
+      </div>
     </Carousel>
 
     
