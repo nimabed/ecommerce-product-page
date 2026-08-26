@@ -8,13 +8,12 @@ const product = DUMMY_PRODUCTS[0];
 
 export default function ProductPage() {
   return (
+    <Container className="px-0">
+      <main className="h-screen grid grid-rows-[300px_minmax(0,1fr)] md:grid-rows-none md:grid-cols-2 md:justify-items-center md:items-center">
+        {/* Image Slider */}
+        <Slider sliderImages={product.images} />
 
-    <main className="w-full h-screen grid grid-rows-[300px_minmax(0,1fr)] md:grid-rows-none md:grid-cols-2 md:justify-items-center md:items-center">
-      {/* Image Slider */}
-      <Slider sliderImages={product.images} />
-
-      {/* Article Section */}
-      <Container className="md:px-0">
+        {/* Article Section */}
         <Card 
           product={{
             id: product.id,
@@ -25,8 +24,8 @@ export default function ProductPage() {
             description: product.description,
             thumbnail: product.images[0].thumbnail
           }}
-          />
-      </Container>
-    </main>
+        />
+      </main>
+    </Container>
   );
 }

@@ -4,7 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/com
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Ellipse } from 'lucide-react';
+import { MoveRight } from 'lucide-react';
 import Container from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import hero1_desktop from '@/assets/images/image-hero-1-desktop.jpeg';
@@ -88,36 +88,33 @@ export default function Hero() {
               <CarouselItem key={index}>
                 <div className="relative w-full h-150 md:h-170">
                   <Image 
-                    className={cn("hidden object-cover md:block", isLeft ? "object-left" : "object-center")}
+                    className={cn("hidden object-cover z-1 md:block", isLeft ? "object-left" : "object-center")}
                     src={image.desktopSrc} 
                     alt={image.alt}
                     fill 
                   />            
                   <Image 
-                    className={cn("object-cover md:hidden")}
+                    className={cn("object-cover z-1 md:hidden")}
                     src={image.mobileSrc} 
                     alt={image.alt}
                     fill 
                   />
 
-                  {/* <div className="absolute inset-0 bg-white/20">
-                    <Container className="space-y-3 py-6">
-                      <h2 className="uppercase font-bold text-primary tracking-wide">New Season</h2>
-                      <p className="text-3xl font-extrabold max-w-[70%]">Step Into Something New</p>
-                      <p className="font-semibold text-dark-grayish-blue text-lg max-w-[70%]">Discover the latest sneakers designed for comfort. style and everyday movement.</p>
-
-                      <div className="flex flex-col gap-3">
-                        <Button className="text-white font-semibold max-w-[45%] py-6">
-                          Shop Collection
-                          <ArrowRight />
-                        </Button>
-                        <Button className="bg-white font-semibold max-w-[40%] py-6 ring-1 ring-dark-grayish-blue">
-                          Explore Men
-                        </Button>
-                      </div>
-                    </Container>
-                  </div> */}
-                </div>
+                  {/* Images title */}
+                  <Container className={cn("absolute inset-0 z-2 flex", isLeft ? "justify-end" : "justify-start")}>
+                    <div className={cn("w-full max-w-50 space-y-4 absolute top-[10%] md:top-[20%]", isLeft ? "md:left-[70%]" : "md:left-[10%]")}>
+                      <h2 className="uppercase font-semibold text-sm text-primary tracking-wide md:text-lg">New collection</h2>
+                      <div className="w-7 h-0.5 bg-primary rounded-full md:w-10" />
+                      <p className="text-6xl font-semibold font-hero uppercase leading-13 md:text-8xl md:leading-20">Move different</p>
+                      <div className="w-7 h-0.5 bg-primary rounded-full md:w-10" />
+                      <p className="text-dark-blue text-lg max-w-[70%] md:max-w-none md:text-xl">Built to go beyond.</p>
+                      <Button className="uppercase text-[11px] font-semibold tracking-wide text-dark-blue bg-transparent border-b-2 border-b-dark-blue rounded-none px-0 mt-5 cursor-pointer hover:bg-transparent md:text-base">
+                        Explore now
+                        <MoveRight />
+                      </Button>
+                    </div>
+                  </Container>
+                  </div>
               </CarouselItem>)
             }
           )
@@ -125,13 +122,13 @@ export default function Hero() {
       </CarouselContent>
 
       {/* Carousel Buttons */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-10 space-x-1 z-10">
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-5 space-x-2 z-10">
         {
           count.map((_, index) => 
               <Button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={cn("w-5 h-3 rounded-full cursor-pointer p-0 bg-transparent",
+                className={cn("w-6 h-2 rounded-[50%] cursor-pointer p-0 bg-transparent hover:bg-light-grayish-blue",
                   current === index ? "bg-primary" : "bg-light-grayish-blue"
                 )}
               />

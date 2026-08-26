@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Kumbh_Sans } from "next/font/google";
+import { Kumbh_Sans, Bebas_Neue, Manrope } from "next/font/google";
 import CartContextProvider from '@/store/cart-context';
 import Navbar from '@/components/Navbar';
 import { cn } from "@/lib/utils";
@@ -7,6 +7,12 @@ import "./globals.css";
 
 const kumbhSans = Kumbh_Sans({
   subsets: ["latin"]
+})
+
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebasNeue",
+  subsets: ["latin"],
+  weight: "400"
 })
 
 
@@ -23,11 +29,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", kumbhSans.className)}
+      className={cn("h-full", "antialiased", bebasNeue.variable)}
     >
-      <body>
+      <body className={cn(kumbhSans.className)}>
         <CartContextProvider>
-          <div className="flex flex-col min-h-screen md:h-screen">
+          <div className="relative flex flex-col min-h-screen md:h-screen">
             <Navbar />
             {children}
           </div>

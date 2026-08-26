@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Menu({ onParentClose, onChildClose }: { onParentClose: (e: React.MouseEvent) => void, onChildClose: (e: React.MouseEvent) => void }) {
   return (
-    <div className="absolute inset-0 w-full bg-black/50 z-10 md:hidden" onClick={onParentClose}>
+    <div className="absolute inset-0 w-full bg-black/50 z-99 md:hidden" onClick={onParentClose}>
       <div className="w-[60%] h-full p-5 bg-white">
         <button 
           className="mb-9 cursor-pointer"

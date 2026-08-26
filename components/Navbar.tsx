@@ -9,8 +9,8 @@ import CartModal from './cart/CartModal';
 export default function Navbar() {
   return (
     <header>
-      <Container>
-        <div className="flex justify-between w-full py-6 md:py-8">
+      <Container className="static">
+        <div className="flex justify-between py-6 md:py-8">
           <div className="flex items-center space-x-3">
             {/* Mobile Menu Button */}
             <MenuButton />

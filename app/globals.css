@@ -13,6 +13,10 @@
   --color-light-grayish-blue: hsl(223, 64%, 98%);
 }
 
+@theme inline {
+  --font-hero: var(--font-bebasNeue);
+}
+
 /* @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
