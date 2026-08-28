@@ -75,7 +75,7 @@ export default function Hero() {
     <Carousel 
       setApi={apiInit}
       className="relative w-full"
-      plugins= {[Autoplay({delay: 4000})]}
+      // plugins= {[Autoplay({delay: 4000})]}
       onMouseEnter={stopCarousel}
       onMouseLeave={resetCarousel}
     >
@@ -108,7 +108,7 @@ export default function Hero() {
                       <p className="text-6xl font-semibold font-hero uppercase leading-13 md:text-8xl md:leading-20">Move different</p>
                       <div className="w-7 h-0.5 bg-primary rounded-full md:w-10" />
                       <p className="text-dark-blue text-lg max-w-[70%] md:max-w-none md:text-xl">Built to go beyond.</p>
-                      <Button className="uppercase text-[11px] font-semibold tracking-wide text-dark-blue bg-transparent border-b-2 border-b-dark-blue rounded-none px-0 mt-5 cursor-pointer hover:bg-transparent md:text-base">
+                      <Button className="uppercase text-[11px] font-semibold tracking-wide text-dark-blue bg-transparent border-b-2 border-b-dark-blue rounded-none px-0 mt-5 cursor-pointer  hover:bg-transparent hover:scale-105 md:text-base">
                         Explore now
                         <MoveRight />
                       </Button>

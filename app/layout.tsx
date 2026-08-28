@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Kumbh_Sans, Bebas_Neue, Manrope } from "next/font/google";
+import { Kumbh_Sans, Bebas_Neue } from "next/font/google";
 import CartContextProvider from '@/store/cart-context';
 import Navbar from '@/components/Navbar';
 import { cn } from "@/lib/utils";
