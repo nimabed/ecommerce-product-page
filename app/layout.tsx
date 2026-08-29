@@ -33,7 +33,7 @@ export default function RootLayout({
     >
       <body className={cn(kumbhSans.className)}>
         <CartContextProvider>
-          <div className="relative flex flex-col min-h-screen md:h-screen">
+          <div className="relative flex flex-col min-h-screen">
             <Navbar />
             {children}
           </div>

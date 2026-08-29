@@ -219,6 +219,7 @@ function CarouselNext({
         orientation === "horizontal"
           ? "inset-y-0 -right-12 my-auto"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        canScrollNext ? "block" : "hidden", 
         className
       )}
       disabled={!canScrollNext}
