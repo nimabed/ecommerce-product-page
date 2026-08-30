@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import HowItWorks from '@/components/HowItWorks';
 import NewArrivals from '@/components/NewArrivals';
 import ShopByCategory from '@/components/ShopByCategory';
+import FallBanner from '@/components/FallBanner';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <HowItWorks />
         <NewArrivals />
         <ShopByCategory />
+        <FallBanner />
       </Container>
     </>
   );
