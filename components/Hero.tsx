@@ -128,7 +128,7 @@ export default function Hero() {
               <Button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={cn("w-6 h-2 rounded-[50%] cursor-pointer p-0 bg-transparent hover:bg-light-grayish-blue",
+                className={cn("w-6 h-2 rounded-[50%] cursor-pointer p-0 bg-transparent",
                   current === index ? "bg-primary" : "bg-light-grayish-blue"
                 )}
               />
