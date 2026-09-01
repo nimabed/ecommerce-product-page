@@ -6,6 +6,7 @@ import ShopByCategory from '@/components/ShopByCategory';
 import FallBanner from '@/components/FallBanner';
 import BestSellers from '@/components/BestSellers';
 import JoinCommunity from '@/components/JoinCommunity';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <BestSellers />
       </Container>
       <JoinCommunity />
+      <Footer />
     </>
   );
 }
