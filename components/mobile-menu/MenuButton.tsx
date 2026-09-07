@@ -1,32 +1,46 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
+import { Menu as MobileMenuIcon } from 'lucide-react';
 import Menu from './Menu';
 
 export default function MenuButton() {
   
-  const [menuIsActive, setMenuIsActive] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   function handleParentCloseMenu(e: React.MouseEvent) {
     if(e.target !== e.currentTarget) return
-    setMenuIsActive(false);
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsOpen(false);
+      setIsClosing(false);
+    }, 250)
   }
 
   function handleChildCloseMenu(e: React.MouseEvent) {
     e.stopPropagation();
-    setMenuIsActive(false);
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsOpen(false);
+      setIsClosing(false);
+    }, 250)
   }
 
   return (
     <>
       <button 
-        className="cursor-pointer md:hidden"
-        onClick={() => setMenuIsActive(true)}
+        className="text-dark-grayish-blue cursor-pointer pt-1 md:hidden"
+        onClick={() => setIsOpen(true)}
       >
-        <Image className="mt-1 mr-1" src='/icon-menu.svg' alt='menu icon' width={17} height={17} />
+        <MobileMenuIcon strokeWidth={3} />
       </button>
-      {menuIsActive && <Menu onParentClose={handleParentCloseMenu} onChildClose={handleChildCloseMenu} />}
+      {isOpen && <Menu 
+        isOpen={isOpen}
+        isClosing={isClosing}
+        onParentClose={handleParentCloseMenu} 
+        onChildClose={handleChildCloseMenu} 
+      />}
     </>
   )
 }

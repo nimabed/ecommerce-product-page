@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-export default function FallBanner() {
+export default function PromotionalBanner() {
   return (
-    <div className="group relative w-full h-110 rounded-lg overflow-hidden my-5 md:h-95">
+    <div className="group relative w-full h-110 rounded-lg overflow-hidden my-5 md:h-80">
       <Image
         className="size-full object-cover object-bottom md:hidden"
         src="/image-fall-banner-mobile.jpeg"

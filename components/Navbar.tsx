@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from './ui/button';
 import { Search } from 'lucide-react';
 import Container from '@/components/ui/container';
 import MenuButton from './mobile-menu/MenuButton';
@@ -22,27 +23,27 @@ export default function Navbar() {
             <nav className="hidden ml-10 md:block">
               <ul className="flex space-x-8 items-center text-dark-grayish-blue">
                 <li 
-                  className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+                  className="relative nav-link-effect"
                 >
                   <Link href='/collections'>Collections</Link>
                 </li>
                 <li
-                  className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+                  className="relative nav-link-effect"
                 >
                   <Link href='/products/men'>Men</Link>
                 </li>
                 <li 
-                  className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+                  className="relative nav-link-effect"
                 >
                   <Link href='/products/women'>Women</Link>
                 </li>
                 <li 
-                  className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+                  className="relative nav-link-effect"
                 >
                   <Link href='/about'>About</Link>
                 </li>
                 <li 
-                  className="decoration-4 decoration-primary hover:underline hover:underline-offset-[3.3rem]"
+                  className="relative nav-link-effect"
                 >
                   <Link href='/contact'>Contact</Link>
                 </li>
@@ -50,17 +51,25 @@ export default function Navbar() {
             </nav>
           </div>
           {/* Icons */}
-          <div className="flex items-center gap-5 md:gap-9 md:pr-3">
+          <div className="flex items-center gap-1 md:gap-5 md:pr-4">
             {/* Search Button */}
-            <button className="cursor-pointer">
-              <Search className="size-5 text-dark-grayish-blue md:size-5.5" />
-            </button>
-            {/* Cart Button */}
+            <Button className="p-2 rounded-lg text-dark-grayish-blue bg-transparent cursor-pointer hover:bg-grayish-blue/30">
+              <Search className="size-5 md:size-5.5" />
+            </Button>
+            {/* bg-transparent Cart Button */}
             <CartButton>
               <CartModal />
             </CartButton>
             {/* Profile Button */}
-            <Image className="cursor-pointer ring rounded-full hover:ring-primary md:scale-200 md:ml-4" src='/image-avatar.png' alt='profile avatar image' width={25} height={25} />
+            <Button className="size-8 rounded-full overflow-hidden cursor-pointer bg-transparent p-0 ml-1 hover:ring-2 hover:ring-primary md:size-10">
+              <Image 
+                className="size-full object-cover" 
+                src='/image-avatar.png' 
+                alt='profile avatar image' 
+                width={50} 
+                height={50} 
+              />
+            </Button>
           </div>
         </div>
         <div className="hidden w-full h-0.5 bg-dark-grayish-blue/10 mt-4 rounded-full md:block" /> 

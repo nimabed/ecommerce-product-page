@@ -23,7 +23,7 @@ export default function JoinCommunity() {
               type="email"
               placeholder="Enter your email"  
             />
-            <Button className="text-white px-5 py-5 bg-primary font-semibold cursor-pointer">Subscribe</Button>
+            <Button className="text-white px-5 py-5 bg-primary font-semibold cursor-pointer hover-effect">Subscribe</Button>
           </form>
         </div>
       </div>

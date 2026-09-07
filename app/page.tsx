@@ -1,12 +1,10 @@
 import Container from '@/components/ui/container';
-import Hero from '@/components/Hero';
-import HowItWorks from '@/components/HowItWorks';
-import NewArrivals from '@/components/NewArrivals';
-import ShopByCategory from '@/components/ShopByCategory';
-import FallBanner from '@/components/FallBanner';
-import BestSellers from '@/components/BestSellers';
-import JoinCommunity from '@/components/JoinCommunity';
-import Footer from '@/components/Footer';
+import Hero from '@/pages/home/Hero';
+import HowItWorks from '@/pages/home/HowItWorks';
+import NewArrivals from '@/pages/home/NewArrivals';
+import ShopByCategory from '@/pages/home/ShopByCategory';
+import PromotionalBanner from '@/pages/home/PromotionalBanner';
+import BestSellers from '@/pages/home/BestSellers';
 
 export default function Home() {
   return (
@@ -16,11 +14,9 @@ export default function Home() {
         <HowItWorks />
         <NewArrivals />
         <ShopByCategory />
-        <FallBanner />
+        <PromotionalBanner />
         <BestSellers />
       </Container>
-      <JoinCommunity />
-      <Footer />
     </>
   );
 }

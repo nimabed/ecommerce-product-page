@@ -4,7 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/com
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { MoveRight } from 'lucide-react';
+import { MoveRight, Ellipse } from 'lucide-react';
 import Container from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import hero1_desktop from '@/assets/images/image-hero-1-desktop.jpeg';
@@ -102,7 +102,7 @@ export default function Hero() {
 
                   {/* Images title */}
                   <Container className={cn("absolute inset-0 z-2 flex", isLeft ? "justify-end" : "justify-start")}>
-                    <div className={cn("w-full max-w-50 space-y-4 absolute top-[10%] md:top-[20%]", isLeft ? "md:left-[70%]" : "md:left-[10%]")}>
+                    <div className={cn("w-full max-w-50 space-y-4 absolute top-[10%] md:top-[20%] animate-in duration-500 fade-in", isLeft ? "md:left-[70%] slide-in-from-right" : "md:left-[10%] slide-in-from-left")}>
                       <h2 className="uppercase font-semibold text-sm text-primary tracking-wide md:text-lg">New collection</h2>
                       <div className="w-7 h-0.5 bg-primary rounded-full md:w-10" />
                       <p className="text-6xl font-semibold font-hero uppercase leading-13 md:text-8xl md:leading-20">Move different</p>
@@ -128,10 +128,17 @@ export default function Hero() {
               <Button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={cn("w-6 h-2 rounded-[50%] cursor-pointer p-0 bg-transparent",
-                  current === index ? "bg-primary" : "bg-light-grayish-blue"
-                )}
-              />
+                className="bg-transparent cursor-pointer p-0 active:translate-y-0!"
+              >
+                <Ellipse 
+                  strokeWidth={1} 
+                  className={cn("size-5 md:size-6",
+                    current === index 
+                      ? "text-primary fill-primary" 
+                      : "text-light-grayish-blue fill-light-grayish-blue"
+                  )} 
+                />
+              </Button>
           )
         }
       </div>

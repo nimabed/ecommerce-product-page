@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import Ranking from './ui/ranking';
+import Ranking from '../../components/ui/ranking';
 
 
 const bestSellers = [
@@ -50,10 +50,10 @@ export default function BestSellers() {
         {
           bestSellers.map(item =>
             <Link key={item.title} href="#" className="w-full">
-              <div className="w-full flex items-center gap-4">
+              <div className="group w-full flex items-center gap-4">
                 <div className="w-full max-w-30 h-20 rounded-lg overflow-hidden md:h-25 md:shrink-0">
                   <Image
-                    className="size-full object-cover"
+                    className="size-full object-cover card-hover-effect"
                     src={item.image}
                     alt="Best sell image product"
                     width={250}

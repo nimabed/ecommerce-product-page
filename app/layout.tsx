@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Kumbh_Sans, Bebas_Neue } from "next/font/google";
 import CartContextProvider from '@/store/cart-context';
 import Navbar from '@/components/Navbar';
+import JoinCommunity from '@/components/JoinCommunity';
+import Footer from '@/components/Footer';
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -36,6 +38,8 @@ export default function RootLayout({
           <div className="relative flex flex-col min-h-screen">
             <Navbar />
             {children}
+            <JoinCommunity />
+            <Footer />
           </div>
         </CartContextProvider>
       </body>

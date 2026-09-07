@@ -1,15 +1,15 @@
 import { ArrowRight, Heart } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Card, CardContent } from './ui/card';
-import { Badge } from './ui/badge';
+import { Card, CardContent } from '../../components/ui/card';
+import { Badge } from '../../components/ui/badge';
 import { 
   Carousel, 
   CarouselContent, 
   CarouselItem, 
   CarouselNext, 
   CarouselPrevious
-} from './ui/carousel';
+} from '../../components/ui/carousel';
 
 const freshPicks = [
   {
@@ -58,10 +58,10 @@ export default function NewArrivals() {
               <CarouselItem key={item.title} className="max-w-40 md:max-w-80 md:mr-2">
                 {/* Cards */}
                 <Link href="#">
-                  <Card className="w-full ring-0 pt-0 bg-dark-grayish-blue/10">
+                  <Card className="group w-full ring-0 pt-0 bg-dark-grayish-blue/10">
                     <div className="relative rounded-lg overflow-hidden">
                       <Image 
-                        className="size-full"
+                        className="size-full card-hover-effect"
                         src={item.image} 
                         alt="shoe image" 
                         width={200} 
