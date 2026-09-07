@@ -75,7 +75,7 @@ export default function Hero() {
     <Carousel 
       setApi={apiInit}
       className="relative w-full"
-      // plugins= {[Autoplay({delay: 4000})]}
+      plugins= {[Autoplay({delay: 4000})]}
       onMouseEnter={stopCarousel}
       onMouseLeave={resetCarousel}
     >

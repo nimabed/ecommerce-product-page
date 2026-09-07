@@ -5,22 +5,22 @@ const howItWorks = [
   {
     title: "Free Shipping",
     caption: "On all orders over $100",
-    icon: <Truck className="size-9 text-primary hover:scale-105 md:size-11" strokeWidth={1.5} />
+    icon: <Truck className="size-9 text-primary transition group-hover:scale-105 md:size-11" strokeWidth={1.5} />
   },
   {
     title: "Secure Payment",
     caption: "100% secure checkout",
-    icon: <ShieldCheck className="size-9 text-primary hover:scale-105 md:size-10" strokeWidth={1.5} />
+    icon: <ShieldCheck className="size-9 text-primary transition group-hover:scale-105 md:size-10" strokeWidth={1.5} />
   },
   {
     title: "Easy Returns",
     caption: "30-day return policy",
-    icon: <Repeat className="size-9 text-primary hover:scale-105 md:size-10" strokeWidth={1.5} />
+    icon: <Repeat className="size-9 text-primary transition group-hover:scale-105 md:size-10" strokeWidth={1.5} />
   },
   {
     title: "24/7 Support",
     caption: "We're here to help",
-    icon: <Headset className="size-9 text-primary hover:scale-105 md:size-10" strokeWidth={1.5} />
+    icon: <Headset className="size-9 text-primary transition group-hover:scale-105 md:size-10" strokeWidth={1.5} />
   }
 ]
 
@@ -32,7 +32,7 @@ export default function HowItWorks() {
         howItWorks.map((item, index) => {
           return (
             <Fragment key={index}>
-              <div className="flex items-center justify-start gap-5 pl-10 md:pl-0">
+              <div className="group flex items-center justify-start gap-5 pl-10 md:pl-0">
                 <div>
                   {item.icon}
                 </div>
