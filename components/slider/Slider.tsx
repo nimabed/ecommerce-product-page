@@ -37,7 +37,7 @@ export default function Slider({ sliderImages }:{
 
   return (
     <section className="w-full md:max-w-[70%]">
-      <div className="relative h-[300px] md:h-[500px]">
+      <div className="relative h-75 md:h-125">
         <Image 
           className="object-cover md:rounded-xl"
           src={sliderImages[currentActiveIndex].src}

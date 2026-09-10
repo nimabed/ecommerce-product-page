@@ -189,13 +189,14 @@ function CarouselPrevious({
         orientation === "horizontal"
           ? "inset-y-0 -left-12 my-auto"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        canScrollPrev ? "opacity-100!" : "opacity-0!",
         className
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
-      <ChevronLeftIcon />
+      <ChevronLeftIcon strokeWidth={4} />
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -219,14 +220,14 @@ function CarouselNext({
         orientation === "horizontal"
           ? "inset-y-0 -right-12 my-auto"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-        canScrollNext ? "block" : "hidden", 
+        canScrollNext ? "opacity-100!" : "opacity-0!", 
         className
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <ChevronRightIcon />
+      <ChevronRightIcon strokeWidth={4} />
       <span className="sr-only">Next slide</span>
     </Button>
   )

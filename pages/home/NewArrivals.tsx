@@ -82,8 +82,8 @@ export default function NewArrivals() {
             )
           }
         </CarouselContent>
-        <CarouselNext size="lg" className="hidden right-3 bg-white text-primary border-0 cursor-pointer md:block" />
-        <CarouselPrevious size="lg" className="hidden left-3 bg-white text-primary border-0 cursor-pointer md:block" />
+        <CarouselNext size="lg" className="hidden right-3 bg-white text-primary border-dark-grayish-blue/10 cursor-pointer md:block" />
+        <CarouselPrevious size="lg" className="hidden left-3 bg-white text-primary border-dark-grayish-blue/10 cursor-pointer md:block" />
       </Carousel>
     </div>
   )
