@@ -5,6 +5,7 @@ import Modal, {type modalRef } from '@/components/ui/Modal';
 import { Button } from '@/components/ui/button';
 import { Funnel, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import FilterContents from './FilterContents';
 
 export default function Filter() {
 
@@ -16,20 +17,19 @@ export default function Filter() {
     setTimeout(() => {
       dialogRef.current?.close();
       setIsClosing(false);
-    }, 450)
+    }, 250)
   }
 
   return (
     <>
       <Modal 
         ref={dialogRef}
-        className={`${isClosing ? "animate-out fade-out" : "animate-in fade-in"}`}
-        closeModal={closeModal}
+        closeManually={closeModal}
       >
-        <div className={cn("absolute w-full h-full bottom-0 duration-500 bg-white", 
+        <div className={cn("absolute size-full bottom-0 duration-300 bg-white", 
           isClosing ? "animate-out slide-out-to-bottom" : "animate-in slide-in-from-bottom"
         )}>
-          <h1>This is dialog</h1>
+          <FilterContents />
         </div>
       </Modal>
       <Container className="flex items-center justify-between">
