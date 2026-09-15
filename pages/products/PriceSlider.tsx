@@ -1,18 +1,14 @@
 'use client';
 import { useState } from 'react';
 import { Slider } from '@/components/ui/slider';
-import { FieldTitle, Field } from '@/components/ui/field';
-
 
 export default function PriceSlider() {
 
   const [value, setValue] = useState<number[]>([30, 80]);
 
   return (
-    <Field orientation="horizontal" className="flex flex-col items-start gap-5 py-5">
-      <FieldTitle className="font-bold text-base">
-        Price
-      </FieldTitle>
+    <div className="space-y-4 py-4">
+      <h2 className="font-bold text-base">Price</h2>
       <div className="w-full">
         <Slider
           className="bg-dark-grayish-blue/30"
@@ -27,6 +23,6 @@ export default function PriceSlider() {
           <span>{`$${value[1]}`}</span>
         </div>
       </div>
-    </Field>
+    </div>
   )
 }

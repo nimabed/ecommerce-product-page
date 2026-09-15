@@ -29,7 +29,7 @@ export default function Filter() {
         <div className={cn("absolute size-full bottom-0 duration-300 bg-white", 
           isClosing ? "animate-out slide-out-to-bottom" : "animate-in slide-in-from-bottom"
         )}>
-          <FilterContents />
+          <FilterContents onClose={() => closeModal()} />
         </div>
       </Modal>
       <Container className="flex items-center justify-between">
