@@ -1,46 +1,33 @@
 'use client';
-
-import { useState } from 'react';
-import { Menu as MobileMenuIcon } from 'lucide-react';
-import Menu from './Menu';
+import { useState, useRef } from 'react';
+import { Menu } from 'lucide-react';
+import MenuContent from './Menu';
+import Modal, { type modalRef } from '@/components/ui/Modal';
 
 export default function MenuButton() {
   
-  const [isOpen, setIsOpen] = useState(false);
+  const modalRef = useRef<modalRef>(null);
   const [isClosing, setIsClosing] = useState(false);
 
-  function handleParentCloseMenu(e: React.MouseEvent) {
-    if(e.target !== e.currentTarget) return
+  function closeModal() {
     setIsClosing(true);
     setTimeout(() => {
-      setIsOpen(false);
+      modalRef.current?.close();
       setIsClosing(false);
-    }, 250)
-  }
-
-  function handleChildCloseMenu(e: React.MouseEvent) {
-    e.stopPropagation();
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
-    }, 250)
+    }, 400)
   }
 
   return (
     <>
+      <Modal ref={modalRef} closeManually={closeModal} className="md:hidden">
+        <MenuContent isClosing={isClosing} onClose={closeModal}  />
+      </Modal>
       <button 
         className="text-dark-grayish-blue cursor-pointer pt-1 md:hidden"
-        onClick={() => setIsOpen(true)}
+        onClick={() => modalRef.current?.open()}
       >
-        <MobileMenuIcon strokeWidth={3} />
+        <Menu strokeWidth={3} />
       </button>
-      {isOpen && <Menu 
-        isOpen={isOpen}
-        isClosing={isClosing}
-        onParentClose={handleParentCloseMenu} 
-        onChildClose={handleChildCloseMenu} 
-      />}
     </>
   )
 }

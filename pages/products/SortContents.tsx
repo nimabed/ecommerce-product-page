@@ -4,12 +4,16 @@ import { Separator } from '@/components/ui/separator';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-export default function SortContents({ onClose }: {
-  onClose: () => void
+export default function SortContents({ onClose, isClosing }: {
+  onClose: () => void,
+  isClosing: boolean
 }) {
   return (
-    <>
+    <div className={cn("absolute w-full h-[60%] bottom-0 duration-500 bg-white",
+      isClosing ? "animate-out slide-out-to-bottom" : "animate-in slide-in-from-bottom"
+    )}>
       {/* Title Section */}
       <Container>
         <div className="flex items-center justify-between py-3">
@@ -61,6 +65,6 @@ export default function SortContents({ onClose }: {
           <Button className="w-full font-bold text-base text-white py-5">Apply</Button>
         </div>
       </Container>
-    </>
+    </div>
   )
 }

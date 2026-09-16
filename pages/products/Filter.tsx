@@ -4,7 +4,6 @@ import Container from '@/components/ui/container';
 import Modal, {type modalRef } from '@/components/ui/Modal';
 import { Button } from '@/components/ui/button';
 import { Funnel, ChevronDown, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import FilterContents from './FilterContents';
 import SortContents from './SortContents';
 
@@ -19,7 +18,7 @@ export default function Filter() {
     setTimeout(() => {
       dialogRef.current?.close();
       setIsClosing(false);
-    }, 250)
+    }, 400)
   }
 
   function filterButtonHandler() {
@@ -38,12 +37,8 @@ export default function Filter() {
         ref={dialogRef}
         closeManually={closeModal}
       >
-        <div className={cn("absolute size-full bottom-0 duration-300 bg-white", 
-          isClosing ? "animate-out slide-out-to-bottom" : "animate-in slide-in-from-bottom"
-        )}>
-          {content === 'filter' && <FilterContents onClose={() => closeModal()} />}
-          {content === 'sort' && <SortContents onClose={() => closeModal()} />}
-        </div>
+        {content === 'filter' && <FilterContents isClosing={isClosing} onClose={() => closeModal()} />}
+        {content === 'sort' && <SortContents isClosing={isClosing} onClose={() => closeModal()} />}
       </Modal>
       <Container className="space-y-2 py-5">
         {/* Filter/Sort Buttons Sections */}
