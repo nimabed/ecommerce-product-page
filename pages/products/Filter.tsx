@@ -32,7 +32,7 @@ export default function Filter() {
   }
 
   return (
-    <>
+    <div className="md:hidden">
       <Modal 
         ref={dialogRef}
         closeManually={closeModal}
@@ -64,7 +64,7 @@ export default function Filter() {
         <div>
           <span className="text-sm text-dark-grayish-blue">Showing 1-12 of 48 products</span>
         </div>
-        {/* Selected filters actions */}
+        {/* Filter tags Section */}
         <div className="space-x-2">
           <Button variant="label" size="lg">
             Men
@@ -79,6 +79,6 @@ export default function Filter() {
           </Button>
         </div>
       </Container>
-    </>
+    </div>
   )
 }

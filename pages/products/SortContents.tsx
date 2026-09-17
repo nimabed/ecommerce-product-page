@@ -11,7 +11,7 @@ export default function SortContents({ onClose, isClosing }: {
   isClosing: boolean
 }) {
   return (
-    <div className={cn("absolute w-full h-[60%] bottom-0 duration-500 bg-white",
+    <div className={cn("absolute w-full h-[60%] bottom-0 duration-500 bg-white rounded-t-2xl",
       isClosing ? "animate-out slide-out-to-bottom" : "animate-in slide-in-from-bottom"
     )}>
       {/* Title Section */}

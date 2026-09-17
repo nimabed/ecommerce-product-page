@@ -22,7 +22,11 @@
 }
 
 .hover-effect {
-  @apply transition-colors duration-300 hover:bg-primary/75;
+  @apply transition-opacity duration-300 hover:opacity-85;
+}
+
+.hover-effect-outline {
+  @apply transition-colors duration-300 hover:bg-dark-grayish-blue/30
 }
 
 .nav-link-effect {
