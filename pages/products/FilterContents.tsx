@@ -31,7 +31,7 @@ export default function FilterContents({ onClose, isClosing }: {
       {/* Category Section */}
       <Container>
         <div className="space-y-3 py-4">
-          <h2 className="font-bold text-base">Category</h2>
+          <h3 className="font-bold text-base">Category</h3>
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <Checkbox id="running" name="running" />
@@ -69,7 +69,7 @@ export default function FilterContents({ onClose, isClosing }: {
       {/* Size Section */}
       <Container>
         <div className="space-y-3 py-4">
-          <h2 className="font-bold text-base">Size (US)</h2>
+          <h3 className="font-bold text-base">Size (US)</h3>
           <div className="flex items-center justify-between gap-2">
             <Button variant="outline" size="lg" className="flex-1">7</Button>
             <Button variant="outline" size="lg" className="flex-1">8</Button>
@@ -83,7 +83,7 @@ export default function FilterContents({ onClose, isClosing }: {
       {/* Color Section */}
       <Container>
         <div className="space-y-3 py-4">
-          <h2 className="font-bold text-base">Color</h2>
+          <h3 className="font-bold text-base">Color</h3>
           <div className="space-x-2">
             <Button variant="outline" size="icon" className="rounded-full bg-black! hover:opacity-70! border-2 border-primary" />
             <Button variant="outline" size="icon" className="rounded-full bg-white! hover:opacity-70!" />

@@ -8,7 +8,7 @@ export default function PriceSlider() {
 
   return (
     <div className="space-y-4 py-4">
-      <h2 className="font-bold text-base">Price</h2>
+      <h3 className="font-bold text-base">Price</h3>
       <div className="w-full">
         <Slider
           className="bg-dark-grayish-blue/30"
