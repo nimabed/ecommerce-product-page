@@ -4,45 +4,72 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import ProductColors from '@/components/ui/productColors';
 import { Heart, ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-export default function ProductItem() {
+type productProps =  {
+    image: string,
+    title: string,
+    price: string,
+    rank: number,
+    vote: number,
+    isDark: boolean,
+    badge?: string,
+    colors: string[]
+  }
+
+export default function ProductItem({...props}: productProps) {
   return (
-    <div className="w-full">
+    <div className="w-full md:p-1">
       {/* Product Card */}
-      <div className="relative group w-full flex items-center gap-4 ring ring-dark-grayish-blue/20 rounded-lg overflow-hidden ">
+      <div className="relative group w-full flex items-center gap-4 ring ring-dark-grayish-blue/20 rounded-lg overflow-hidden md:flex-col md:items-start ">
         {/* Image Section */}
-        <div className="relative w-full max-w-45 h-35 rounded-lg overflow-hidden md:h-25 md:shrink-0">
+        <div className="relative w-full max-w-45 h-35 rounded-lg overflow-hidden md:max-w-none md:h-60 md:shrink-0">
           <Image
             className="size-full object-cover card-hover-effect"
-            src="/image-product-1.jpg"
+            src={props.image}
             alt="Best sell image product"
-            width={250}
-            height={100}
+            width={400}
+            height={400}
           />
-          <Button size="lg" className="absolute top-0 right-0 px-2 bg-transparent">
-            <Heart strokeWidth={2} className="size-4.5 text-white md:top-3 md:right-3 md:size-5" />
+          <Button 
+            size="lg" 
+            className="absolute top-0 right-0 px-2 bg-transparent md:top-1 md:right-1"
+          >
+            <Heart 
+              strokeWidth={2} 
+              className={cn("size-4.5 md:size-6",
+                props.isDark ? "text-white" : "text-black"
+              )} 
+            />
           </Button>
-          <Badge className="absolute bottom-2 left-2 text-[10px] font-bold text-white rounded-sm uppercase md:text-xs">
-            New
-          </Badge>
+          {
+            props.badge && (
+            <Badge 
+              className={cn("absolute bottom-2 left-2 text-[10px] font-bold rounded-sm uppercase md:text-sm md:p-3",
+                props.isDark ? "bg-white text-primary" : "bg-primary text-white"
+              )}
+            >
+              New
+            </Badge>)
+          }
         </div>
         {/* Caption Section */}
-        <div className="flex flex-col items-start gap-1.5 text-nowrap">
-          <h4 className="font-bold md:text-lg">Classic Runner</h4>
-          <span className="font-medium md:text-lg">$125.00</span>
+        <div className="flex flex-col items-start gap-1.5 text-nowrap md:px-4 md:pb-4">
+          <h4 className="font-bold md:text-lg">{props.title}</h4>
+          <span className="font-medium md:font-semibold md:text-lg">{props.price}</span>
           <div className="flex items-center gap-2">
-            <Ranking ranking={4.5} />
-            <span className="text-xs font-medium text-dark-grayish-blue md:text-sm">(245)</span>
+            <Ranking ranking={props.rank} starSize="md:size-4" />
+            <span className="text-xs font-medium text-dark-grayish-blue md:font-semibold md:text-base">({props.vote})</span>
           </div>
           {/* Product Colors */}
-          <ProductColors colors={["bg-black", "bg-white", "bg-red-500"]} />
+          <ProductColors colors={props.colors} />
         </div>
         {/* Action Button */}
-        <div className="absolute bottom-2 right-2">
+        <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3">
           <Button
             variant="label"
             size="icon"
-            className="text-primary bg-white shadow-[0_1px_10px_rgb(0,0,0,0.1)]"
+            className="text-primary bg-white shadow-[0_1px_5px_rgb(0,0,0,0.2)] transition group-hover:-translate-y-1 group-hover:bg-transparent! md:size-10"
           >
             <ArrowRight strokeWidth={3} />
           </Button>

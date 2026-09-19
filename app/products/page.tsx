@@ -15,7 +15,7 @@ export default function ProductPage() {
       <Container>
         <main className="grid grid-cols-1 md:grid-cols-[20%_1fr] py-5">
           <FilterDesktop /> 
-          <div className="md:px-3">
+          <div className="md:pl-8 md:space-y-6">
             {/* Result and sort sections */}
             <div className="hidden items-center justify-between md:flex">
               <span>Showing 1-12 of 48 products</span>

@@ -1,7 +1,9 @@
 import { Star } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-export default function Ranking({ ranking }: {
-  ranking: number
+export default function Ranking({ ranking, starSize }: {
+  ranking: number,
+  starSize?: string
 }) {
   return (
     <div className="flex items-center gap-1">
@@ -17,11 +19,11 @@ export default function Ranking({ ranking }: {
             > 
               <Star 
                  
-                className="size-2.5 text-primary md:size-3" 
+                className={cn("size-2.5 text-primary md:size-3", starSize)} 
               />
               {/* Fill portion */}
               <div className="absolute inset-0 overflow-hidden" style={{width: `${fillPercent}%`}}>
-                <Star className="size-2.5 fill-primary text-primary md:size-3" />
+                <Star className={cn("size-2.5 fill-primary text-primary md:size-3", starSize)} />
               </div>
             </div>
           )

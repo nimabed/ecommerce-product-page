@@ -7,7 +7,7 @@ export default function ProductColors({ colors }: {
         colors.map(color => (
           <div 
             key={color} 
-            className={`size-4 ring ring-dark-grayish-blue/20 rounded-full ${color}`} 
+            className={`size-3.5 ring ring-dark-grayish-blue/20 rounded-full md:size-4 ${color}`} 
           />
         ))
       }
