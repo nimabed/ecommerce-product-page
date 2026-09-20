@@ -65,11 +65,11 @@ export default function ProductItem({...props}: productProps) {
           <ProductColors colors={props.colors} />
         </div>
         {/* Action Button */}
-        <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3">
+        <div className="absolute bottom-2 right-3 md:bottom-3 md:right-4">
           <Button
             variant="label"
             size="icon"
-            className="text-primary bg-white shadow-[0_1px_5px_rgb(0,0,0,0.2)] transition group-hover:-translate-y-1 group-hover:bg-transparent! md:size-10"
+            className="text-primary bg-white shadow-[0_1px_5px_rgb(0,0,0,0.1),0_-1px_5px_rgb(0,0,0,0.1)] transition-transform duration-300 group-hover:translate-x-1 group-hover:bg-transparent! md:size-10"
           >
             <ArrowRight strokeWidth={3} />
           </Button>
