@@ -28,10 +28,14 @@ export default function SortDesktop() {
             <SelectValue />
           </SelectTrigger>
           <SelectContent alignItemWithTrigger={false}>
-            <SelectGroup>
+            <SelectGroup className="bg-white">
               {
                 items.map(item => (
-                  <SelectItem key={item.value} value={item.value}>
+                  <SelectItem 
+                    key={item.value} 
+                    value={item.value}
+                    className="hover:bg-dark-grayish-blue/20"
+                  >
                     {item.label}
                   </SelectItem>
                 ))
