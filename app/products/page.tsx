@@ -12,6 +12,7 @@ export default function ProductPage() {
   return (
     <>
       <ProductsBanner />
+      {/* Mobile Sort And Filter Section */}
       <Filter />
       <Container>
         <main className="grid grid-cols-1 md:grid-cols-[20%_1fr] py-5">
@@ -24,7 +25,7 @@ export default function ProductPage() {
             </div>
             <Products />
             {/* Pagination Section */}
-            <div>
+            <div className="pt-3">
               <ProductsPagination />
             </div>
           </div>

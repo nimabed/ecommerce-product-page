@@ -45,9 +45,7 @@ export default function ProductItem({...props}: productProps) {
           {
             props.badge && (
             <Badge 
-              className={cn("absolute bottom-2 left-2 text-[10px] font-bold rounded-sm uppercase md:text-sm md:p-3",
-                props.isDark ? "bg-white text-primary" : "bg-primary text-white"
-              )}
+              className="absolute bottom-2 left-2 text-[10px] font-bold rounded-sm uppercase md:text-sm md:p-3 bg-primary text-white"
             >
               New
             </Badge>)
@@ -69,7 +67,7 @@ export default function ProductItem({...props}: productProps) {
           <Button
             variant="label"
             size="icon"
-            className="text-primary bg-white shadow-[0_1px_5px_rgb(0,0,0,0.1),0_-1px_5px_rgb(0,0,0,0.1)] transition-transform duration-300 group-hover:translate-x-1 group-hover:bg-transparent! md:size-10"
+            className="text-primary bg-white shadow-[0_1px_2px_rgb(0,0,0,0.1),0_-1px_2px_rgb(0,0,0,0.1)] transition-transform duration-300 group-hover:translate-x-1 group-hover:bg-transparent! md:size-10"
           >
             <ArrowRight strokeWidth={3} />
           </Button>

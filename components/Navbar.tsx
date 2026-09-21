@@ -53,10 +53,10 @@ export default function Navbar() {
           {/* Icons */}
           <div className="flex items-center gap-1 md:gap-5 md:pr-4">
             {/* Search Button */}
-            <Button className="p-2 rounded-lg text-dark-grayish-blue bg-transparent cursor-pointer hover:bg-grayish-blue/30">
+            <Button className="py-4 px-2 rounded-lg text-dark-grayish-blue bg-transparent cursor-pointer hover:bg-grayish-blue/30">
               <Search className="size-5 md:size-5.5" />
             </Button>
-            {/* bg-transparent Cart Button */}
+            {/* Cart Button */}
             <CartButton>
               <CartModal />
             </CartButton>

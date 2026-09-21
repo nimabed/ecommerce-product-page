@@ -7,6 +7,8 @@ import PriceSlider from './PriceSlider';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+import FilterAccordion from './FilterAccordion';
+
 export default function FilterContents({ onClose, isClosing }: {
   onClose: () => void,
   isClosing: boolean
@@ -28,71 +30,10 @@ export default function FilterContents({ onClose, isClosing }: {
         </div>
       </Container>
       <Separator className="bg-dark-grayish-blue/20" />
-      {/* Category Section */}
-      <Container>
-        <div className="space-y-3 py-4">
-          <h3 className="font-bold text-base">Category</h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <Checkbox id="running" name="running" />
-              <Label htmlFor="running" className="text-base">
-                Running
-              </Label>
-            </div>
-            <div className="flex items-center gap-2">
-              <Checkbox id="lifestyle" name="lifestyle" />
-              <Label htmlFor="lifestyle" className="text-base">
-                Lifestyle
-              </Label>
-            </div>
-            <div className="flex items-center gap-2">
-              <Checkbox id="basketball" name="basketball" />
-              <Label htmlFor="basketball" className="text-base">
-                Basketball
-              </Label>
-            </div>
-            <div className="flex items-center gap-2">
-              <Checkbox id="training" name="training" />
-              <Label htmlFor="training" className="text-base">
-                Training
-              </Label>
-            </div>
-          </div>
-        </div>
-      </Container>
-      <Separator className="bg-dark-grayish-blue/20" />
-      {/* Price Range Section */}
-      <Container>
-        <PriceSlider />
-      </Container>
-      <Separator className="bg-dark-grayish-blue/20" />
-      {/* Size Section */}
-      <Container>
-        <div className="space-y-3 py-4">
-          <h3 className="font-bold text-base">Size (US)</h3>
-          <div className="flex items-center justify-between gap-2">
-            <Button variant="outline" size="lg" className="flex-1">7</Button>
-            <Button variant="outline" size="lg" className="flex-1">8</Button>
-            <Button variant="active" size="lg" className="flex-1">9</Button>
-            <Button variant="outline" size="lg" className="flex-1">10</Button>
-            <Button variant="outline" size="lg" className="flex-1">11</Button>
-          </div>
-        </div>
-      </Container>
-      <Separator className="bg-dark-grayish-blue/20" />
-      {/* Color Section */}
-      <Container>
-        <div className="space-y-3 py-4">
-          <h3 className="font-bold text-base">Color</h3>
-          <div className="space-x-2">
-            <Button variant="outline" size="icon" className="rounded-full bg-black! hover:opacity-70! border-2 border-primary" />
-            <Button variant="outline" size="icon" className="rounded-full bg-white! hover:opacity-70!" />
-            <Button variant="outline" size="icon" className="rounded-full bg-primary! hover:opacity-70!" />
-            <Button variant="outline" size="icon" className="rounded-full bg-amber-900! hover:opacity-70!" />
-          </div>
-        </div>
-      </Container>
-      <Separator className="bg-dark-grayish-blue/20" />
+
+      <FilterAccordion isDesktop={false} />
+
+
       {/* Actions */}
       <Container>
         <div className="flex items-center gap-3 py-4">

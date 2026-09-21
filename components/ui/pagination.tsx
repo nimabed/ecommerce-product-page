@@ -23,7 +23,7 @@ function PaginationContent({
   return (
     <ul
       data-slot="pagination-content"
-      className={cn("flex items-center gap-0.5", className)}
+      className={cn("flex items-center gap-1.5 md:gap-3", className)}
       {...props}
     />
   )
@@ -46,9 +46,10 @@ function PaginationLink({
 }: PaginationLinkProps) {
   return (
     <Button
-      variant={isActive ? "outline" : "ghost"}
+      variant={isActive ? "paginationActive" : "ghost"}
       size={size}
-      className={cn(className)}
+      className={cn("underline-offset-6 md:text-base", 
+        !isActive && "hover:underline", className)}
       nativeButton={false}
       render={
         <a
@@ -70,12 +71,11 @@ function PaginationPrevious({
   return (
     <PaginationLink
       aria-label="Go to previous page"
-      size="default"
-      className={cn("pl-1.5!", className)}
+      className={cn("px-1.5! mr-2 ring ring-dark-grayish-blue/20 hover:bg-dark-grayish-blue/20 md:size-8.5", className)}
       {...props}
     >
       <ChevronLeftIcon data-icon="inline-start" />
-      <span className="hidden sm:block">{text}</span>
+      <span className="hidden">{text}</span>
     </PaginationLink>
   )
 }
@@ -88,11 +88,10 @@ function PaginationNext({
   return (
     <PaginationLink
       aria-label="Go to next page"
-      size="default"
-      className={cn("pr-1.5!", className)}
+      className={cn("px-1.5! ml-2 ring ring-dark-grayish-blue/20 hover:bg-dark-grayish-blue/20 md:size-8.5", className)}
       {...props}
     >
-      <span className="hidden sm:block">{text}</span>
+      <span className="hidden">{text}</span>
       <ChevronRightIcon data-icon="inline-end" />
     </PaginationLink>
   )

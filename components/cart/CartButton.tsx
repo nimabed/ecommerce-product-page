@@ -15,7 +15,7 @@ export default function CartButton({ children }: {
   return (
     <>
       <Button 
-        className="relative p-2 rounded-lg cursor-pointer text-dark-grayish-blue bg-transparent hover:bg-grayish-blue/30" 
+        className="relative py-4 px-2 rounded-lg cursor-pointer text-dark-grayish-blue bg-transparent hover:bg-grayish-blue/30" 
         onClick={() => setCartIsActive(pervState => !pervState)}
       >
         <ShoppingCart className="size-5 md:size-5.5" />

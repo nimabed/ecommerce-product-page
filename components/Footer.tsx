@@ -99,7 +99,7 @@ export default function Footer() {
         </div>
       </div>
       {/* Copyright Section */}
-      <div className="flex items-center text-sm justify-center pt-5 text-dark-grayish-blue md:justify-start md:pt-2">
+      <div className="flex items-center text-sm justify-center py-5 text-dark-grayish-blue md:justify-start">
         <Copyright className="size-3 mr-1" />
         2026 Sneakers. All rights reserved.
       </div>
