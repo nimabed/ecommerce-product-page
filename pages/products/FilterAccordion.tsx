@@ -55,7 +55,7 @@ const filterData = [
     title: "Color",
     value: "color",
     items: [
-      { value: "bg-white", label: "White", isActive: true },
+      { value: "bg-white", label: "White", isActive: false },
       { value: "bg-black", label: "black", isActive: false },
       { value: "bg-gray-400", label: "Gray", isActive: false },
       { value: "bg-orange-400", label: "Orange", isActive: false },
@@ -99,10 +99,10 @@ function FilterColors({ items }: filterItemsProp) {
   return (
     <div className="w-full flex items-center flex-wrap gap-4 px-1 pt-1 pb-3">
       {
-        items.map(color => 
-          <Button 
+        items.map(color =>
+          <Button
             key={color.label}
-            className={cn("size-7 rounded-full border border-dark-grayish-blue/20", color.value, 
+            className={cn("size-7 rounded-full border border-dark-grayish-blue/20", color.value,
               color.isActive ? "bg-clip-padding ring-2 ring-primary" : "hover:bg-clip-padding hover:ring-1"
             )}
           />
@@ -112,28 +112,28 @@ function FilterColors({ items }: filterItemsProp) {
   )
 }
 
-export default function FilterAccordion({ isDesktop }:{
+export default function FilterAccordion({ isDesktop }: {
   isDesktop: boolean
 }) {
   return (
-    <Accordion 
-      multiple 
+    <Accordion
+      multiple
       defaultValue={
-        isDesktop 
-          ? ["category","gender", "size", "color", "price"] 
+        isDesktop
+          ? ["category", "gender", "size"]
           : undefined}
     >
       {
         filterData.map(filter => (
-          <AccordionItem 
-          key={filter.value} 
-          value={filter.value}
-          className={cn("border-b-dark-grayish-blue/20",
-            isDesktop ? "px-3" : "px-6"
-          )}
+          <AccordionItem
+            key={filter.value}
+            value={filter.value}
+            className={cn("border-b-dark-grayish-blue/20",
+              isDesktop ? "px-3" : "px-6"
+            )}
           >
-            <AccordionTrigger 
-              chevronColor={isDesktop ? "text-primary" : "text-black"} 
+            <AccordionTrigger
+              chevronColor={isDesktop ? "text-primary" : "text-black"}
               className="font-semibold text-base cursor-pointer hover:no-underline"
             >{filter.title}</AccordionTrigger>
             <AccordionContent>
@@ -141,11 +141,12 @@ export default function FilterAccordion({ isDesktop }:{
                 filter.value === "color"
                   ? <FilterColors items={filter.items} />
                   : <FilterItems items={filter.items} />
-              } 
+              }
             </AccordionContent>
           </AccordionItem>
         ))
       }
-    </Accordion>
+    </Accordion >
+
   )
 }

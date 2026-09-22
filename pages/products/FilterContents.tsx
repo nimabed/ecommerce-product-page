@@ -1,12 +1,8 @@
 import Container from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
-import PriceSlider from './PriceSlider';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
 import FilterAccordion from './FilterAccordion';
 
 export default function FilterContents({ onClose, isClosing }: {
@@ -32,7 +28,6 @@ export default function FilterContents({ onClose, isClosing }: {
       <Separator className="bg-dark-grayish-blue/20" />
 
       <FilterAccordion isDesktop={false} />
-
 
       {/* Actions */}
       <Container>

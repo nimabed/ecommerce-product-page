@@ -1,26 +1,20 @@
-import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
-import { RotateCcw } from 'lucide-react';
-
-
 import FilterAccordion from './FilterAccordion';
 
 export default function FilterDesktop() {
   return (
-    <div className="hidden w-full ring ring-dark-grayish-blue/20 ml-0.5 rounded-md md:block">
-      {/* Title Section */}
-      <h2 className="font-semibold text-base text-primary uppercase tracking-wide p-3">Filters</h2>
-      <Separator className="bg-dark-grayish-blue/20" />
+    <div className="hidden w-full ml-0.5 md:block">
+      <div className="sticky top-3 ring ring-dark-grayish-blue/20 rounded-md overflow-y-scroll scroll-smooth overscroll-none max-h-screen">
+        {/* Title Section */}
+        <div className="sticky top-0 flex items-center justify-between p-3 bg-white border-b border-b-dark-grayish-blue/20 z-1">
+          <h2 className="font-semibold text-base uppercase tracking-wide">Filters</h2>
+          <Button variant="link" className="font-medium text-sm text-primary no-underline! hover:opacity-80">
+            Clear Filters
+          </Button>
+        </div>
 
-      <FilterAccordion isDesktop />
+        <FilterAccordion isDesktop />
 
-
-      {/* Reset Button */}
-      <div className="py-3">
-        <Button variant="link" className="font-bold text-base text-primary no-underline! hover:opacity-80">
-          <RotateCcw strokeWidth={3} className="size-4" />
-          Clear Filters
-        </Button>
       </div>
     </div>
 

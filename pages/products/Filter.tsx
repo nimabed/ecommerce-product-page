@@ -17,6 +17,7 @@ export default function Filter() {
     setIsClosing(true);
     setTimeout(() => {
       dialogRef.current?.close();
+      document.body.style.overflow = '';
       setIsClosing(false);
     }, 400)
   }
@@ -24,11 +25,13 @@ export default function Filter() {
   function filterButtonHandler() {
     setContent('filter');
     dialogRef.current?.open();
+    document.body.style.overflow = 'hidden';
   }
 
   function sortButtonHandler() {
     setContent('sort');
     dialogRef.current?.open();
+    document.body.style.overflow = 'hidden';
   }
 
   return (

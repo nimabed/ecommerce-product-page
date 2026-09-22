@@ -49,7 +49,7 @@ export default function Modal({children, ref, className, closeManually}:
 
   return (
     <dialog
-      className={cn("size-full max-w-none max-h-none bg-transparent backdrop:bg-black/60", className)}
+      className={cn("size-full max-w-none max-h-none bg-transparent overflow-y-auto backdrop:bg-black/60", className)}
       ref={dialog}
       onClick={clickOnBackdrop}
       onCancel={pressEscKey}
