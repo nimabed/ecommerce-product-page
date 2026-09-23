@@ -1,7 +1,7 @@
 import ProductsBanner from '@/pages/products/ProductsBanner';
-import Filter from '@/pages/products/Filter';
-import FilterDesktop from "@/pages/products/FilterDesktop";
-import SortDesktop from '@/pages/products/SortDesktop';
+import FilterSortMobile from '@/pages/products/filters/FilterSortMobile';
+import FilterDesktop from "@/pages/products/filters/FilterDesktop";
+import SortDesktop from '@/pages/products/filters/SortDesktop';
 import Products from '@/pages/products/Products';
 import ProductsPagination from '@/pages/products/ProductsPagination';
 import Container from '@/components/ui/container';
@@ -11,7 +11,7 @@ export default function ProductPage() {
     <>
       <ProductsBanner />
       {/* Mobile Sort And Filter Section */}
-      <Filter />
+      <FilterSortMobile />
       <Container className="overflow-visible">
         <main className="grid grid-cols-1 md:grid-cols-[20%_1fr] py-5">
           <FilterDesktop /> 

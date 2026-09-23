@@ -112,7 +112,7 @@ function FilterColors({ items }: filterItemsProp) {
   )
 }
 
-export default function FilterAccordion({ isDesktop }: {
+export default function FilterContents({ isDesktop }: {
   isDesktop: boolean
 }) {
   return (

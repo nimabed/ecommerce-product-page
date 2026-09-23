@@ -4,10 +4,10 @@ import Container from '@/components/ui/container';
 import Modal, {type modalRef } from '@/components/ui/Modal';
 import { Button } from '@/components/ui/button';
 import { Funnel, ChevronDown, X } from 'lucide-react';
-import FilterContents from './FilterContents';
-import SortContents from './SortContents';
+import FilterMobile from './FilterMobile';
+import SortMobile from './SortMobile';
 
-export default function Filter() {
+export default function FilterSortMobile() {
 
   const dialogRef = useRef<modalRef>(null);
   const [content, setContent] = useState('');
@@ -40,8 +40,8 @@ export default function Filter() {
         ref={dialogRef}
         closeManually={closeModal}
       >
-        {content === 'filter' && <FilterContents isClosing={isClosing} onClose={() => closeModal()} />}
-        {content === 'sort' && <SortContents isClosing={isClosing} onClose={() => closeModal()} />}
+        {content === 'filter' && <FilterMobile isClosing={isClosing} onClose={() => closeModal()} />}
+        {content === 'sort' && <SortMobile isClosing={isClosing} onClose={() => closeModal()} />}
       </Modal>
       <Container className="space-y-2 py-5">
         {/* Filter/Sort Buttons Sections */}

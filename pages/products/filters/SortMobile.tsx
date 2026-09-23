@@ -6,7 +6,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export default function SortContents({ onClose, isClosing }: {
+export default function SortMobile({ onClose, isClosing }: {
   onClose: () => void,
   isClosing: boolean
 }) {
