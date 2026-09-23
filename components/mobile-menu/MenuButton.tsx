@@ -9,10 +9,16 @@ export default function MenuButton() {
   const modalRef = useRef<modalRef>(null);
   const [isClosing, setIsClosing] = useState(false);
 
+  function openModal() {
+    modalRef.current?.open();
+    document.body.style.overflow = 'hidden'; 
+  }
+
   function closeModal() {
     setIsClosing(true);
     setTimeout(() => {
       modalRef.current?.close();
+      document.body.style.overflow = '';
       setIsClosing(false);
     }, 400)
   }
@@ -24,7 +30,7 @@ export default function MenuButton() {
       </Modal>
       <button 
         className="text-dark-grayish-blue cursor-pointer pt-1 md:hidden"
-        onClick={() => modalRef.current?.open()}
+        onClick={openModal}
       >
         <Menu strokeWidth={3} />
       </button>
