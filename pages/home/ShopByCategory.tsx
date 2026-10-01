@@ -20,7 +20,8 @@ const category = [
   }
 ]
 
-export default function ShopByCategory() {
+export default async function ShopByCategory() {
+
   return (
     <div className="my-5">
       <h3 className="uppercase text-primary font-bold text-xs md:text-sm">Shop by category</h3>
