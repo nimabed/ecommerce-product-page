@@ -22,6 +22,13 @@ export const products = defineType({
       }
     }),
     defineField({
+      name: "productThumbnail",
+      title: "Product thumbnail",
+      type: "image",
+      description: "Product sanity thumbnail",
+      validation: (Rule) => Rule.required()
+    }),
+    defineField({
       name: "brand",
       title: "Brand",
       type: "reference",

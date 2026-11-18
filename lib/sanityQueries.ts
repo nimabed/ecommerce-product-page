@@ -13,10 +13,22 @@ export const PRODUCTS_QUERY = (
         rating,
         reviewCount,
         variants[]{
-        price,
-        colorHexCode->{
-          hexCode
+          price,
+          colorHexCode->{
+            hexCode
+          }
         }
-        }
-
 }`);
+
+export const NEWPRODUCTS_QUERY = (
+  groq`*[_type == "products" && isNewArrival]{
+    _id,
+    title,
+    images,
+    activeImage,
+    isDark,
+    variants[]{
+      price
+    }
+  }`
+)

@@ -1,6 +1,6 @@
 import { ArrowRight, Heart } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { Image } from 'next-sanity/image';
 import { Card, CardContent } from '../../components/ui/card';
 import { Badge } from '../../components/ui/badge';
 import { 
@@ -10,6 +10,11 @@ import {
   CarouselNext, 
   CarouselPrevious
 } from '../../components/ui/carousel';
+import { getNewProducts } from '@/lib/sanityFunctions';
+import { urlFor } from '@/sanity/lib/image';
+import { cn } from '@/lib/utils';
+
+
 
 const freshPicks = [
   {
@@ -39,7 +44,16 @@ const freshPicks = [
   }
 ]
 
-export default function NewArrivals() {
+export default async function NewArrivals() {
+
+  const newProducts = await getNewProducts(); 
+
+
+  if(!newProducts) {
+    return <h1>Fetching new products failed!</h1>
+  }
+
+
   return (
     <div className="my-3">
       <h3 className="uppercase text-primary font-bold text-xs md:text-sm">New Arrivals</h3>
@@ -54,31 +68,40 @@ export default function NewArrivals() {
         </div>
         <CarouselContent>
           {
-            freshPicks.map(item => 
-              <CarouselItem key={item.title} className="max-w-40 md:max-w-80 md:mr-2">
-                {/* Cards */}
-                <Link href="#">
-                  <Card className="group w-full ring-0 pt-0 bg-dark-grayish-blue/10">
-                    <div className="relative rounded-lg overflow-hidden">
-                      <Image 
-                        className="size-full card-hover-effect"
-                        src={item.image} 
-                        alt="shoe image" 
-                        width={200} 
-                        height={200} 
-                      />
-                      <Heart strokeWidth={2} className="size-4 absolute top-2 right-2 cursor-pointer text-white md:top-3 md:right-3 md:size-5" />
-                      <Badge className="absolute bottom-2 left-2 text-[10px] font-semibold text-white rounded-sm uppercase md:text-xs">
-                        New
-                      </Badge>
-                    </div>
-                    <CardContent className="space-y-1">
-                      <p className="font-semibold truncate md:text-lg">{item.title}</p>
-                      <span className="font-semibold text-sm md:text-base">{item.price}</span>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </CarouselItem>
+            newProducts?.map((product) => {
+              const price = product.variants && product.variants[0].price;
+
+              return (
+                <CarouselItem key={product.title} className="max-w-40 md:max-w-80 md:mr-2">
+                  {/* Cards */}
+                  <Link href="#">
+                    <Card className="group w-full ring-0 pt-0 bg-dark-grayish-blue/10">
+                      <div className="relative rounded-lg overflow-hidden">
+                        {(product.images && product.activeImage) && (
+                          <Image 
+                            className="size-full card-hover-effect"
+                            src={urlFor(product.images[product.activeImage - 1]).url()} 
+                            alt="shoe image" 
+                            width={200} 
+                            height={200} 
+                          />)
+                        }
+                        <Heart 
+                          strokeWidth={2} 
+                          className={cn("size-4 absolute top-2 right-2 cursor-pointer md:top-3 md:right-3 md:size-5", product.isDark ? "text-white" : "text-black")} />
+                        <Badge className="absolute bottom-2 left-2 text-[10px] font-semibold text-white rounded-sm uppercase md:text-xs">
+                          New
+                        </Badge>
+                      </div>
+                      <CardContent className="space-y-1">
+                        <p className="font-semibold truncate md:text-lg">{product.title}</p>
+                        <span className="font-semibold text-sm md:text-base">${price?.toFixed(2)}</span>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </CarouselItem>
+              )
+            }
             )
           }
         </CarouselContent>

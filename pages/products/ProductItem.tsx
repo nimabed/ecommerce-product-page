@@ -5,37 +5,15 @@ import { Button } from '@/components/ui/button';
 import ProductColors from '@/components/ui/productColors';
 import { Heart, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { type Products } from '@/sanity.types';
-import { type HexColors } from '@/sanity.types';
 import { urlFor } from '@/sanity/lib/image';
-
-type productVariant = Omit<Products["variants"][], "colorHexCode"> & {
-  colorHexCode: HexColors | null;
-} & { price: number | null}
-
-type product = Omit<products, "variants"> & {
-  variants: productVariant[] | null;
-}
+import { type product } from '@/sanity/manualTypes';
 
 
-type productProps =  {
-    image: string,
-    title: string,
-    price: string,
-    rank: number,
-    vote: number,
-    isDark: boolean,
-    badge?: string,
-    colors: string[]
-  }
+export default function ProductItem({ product }: { product: product}) {
 
-export default function ProductItem({ product }: { product: product | null}) {
+  const colors = product.variants && product.variants.map(variant => variant.colorHexCode?.hexCode);
 
-
-
-  const colors = product?.variants && product.variants.map(variant => variant.colorHexCode?.hexCode);
-
-  const price = product?.variants && product.variants.map(variant => variant.price)[0];
+  const price = product.variants && product.variants.map(variant => variant.price)[0];
 
   return (
     <div className="w-full md:p-1">
@@ -43,10 +21,10 @@ export default function ProductItem({ product }: { product: product | null}) {
       <div className="relative group w-full flex items-center gap-4 ring ring-dark-grayish-blue/20 rounded-lg overflow-hidden md:flex-col md:items-start ">
         {/* Image Section */}
         <div className="relative w-full max-w-45 h-35 rounded-lg overflow-hidden md:max-w-none md:h-60 md:shrink-0">
-          {product?.images && (
+          {(product.images && product.activeImage) && (
             <Image
               className="size-full object-cover card-hover-effect"
-              src={urlFor(product.images[product.activeImage-1]).url()}
+              src={urlFor(product.images[product.activeImage - 1]).url()}
               alt="Best sell image product"
               fill
             />)
@@ -58,12 +36,12 @@ export default function ProductItem({ product }: { product: product | null}) {
             <Heart 
               strokeWidth={2} 
               className={cn("size-4.5 md:size-6",
-                product?.isDark ? "text-white" : "text-black"
+                product.isDark ? "text-white" : "text-black"
               )} 
             />
           </Button>
           {
-            product?.isNewArrival && (
+            product.isNewArrival && (
             <Badge 
               className="absolute bottom-2 left-2 text-[10px] font-bold rounded-sm uppercase md:text-sm md:p-3 bg-primary text-white"
             >
@@ -73,11 +51,11 @@ export default function ProductItem({ product }: { product: product | null}) {
         </div>
         {/* Caption Section */}
         <div className="flex flex-col items-start gap-1.5 text-nowrap md:px-4 md:pb-4">
-          <h4 className="font-bold md:text-lg">{product?.title}</h4>
+          <h4 className="font-bold md:text-lg">{product.title}</h4>
           <span className="font-medium md:font-semibold md:text-lg">${price?.toFixed(2)}</span>
           <div className="flex items-center gap-2">
-            {product?.rating && <Ranking ranking={product.rating} starSize="md:size-4" />}
-            <span className="text-xs font-medium text-dark-grayish-blue md:font-semibold md:text-base">({product?.reviewCount})</span>
+            {product.rating && <Ranking ranking={product.rating} starSize="md:size-4" />}
+            <span className="text-xs font-medium text-dark-grayish-blue md:font-semibold md:text-base">({product.reviewCount})</span>
           </div>
           {/* Product Colors */}
           <ProductColors colors={colors} />

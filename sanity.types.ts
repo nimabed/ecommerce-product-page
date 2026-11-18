@@ -127,6 +127,13 @@ export type Products = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  productThumbnail?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   brand?: BrandsReference;
   category?: Array<
     {
