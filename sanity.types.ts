@@ -22,6 +22,168 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
+export type HexColorsReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "hexColors";
+};
+
+export type Variants = {
+  _type: "variants";
+  color?: string;
+  thumbnail?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  colorHexCode?: HexColorsReference;
+  size?: number;
+  price?: number;
+  originalPrice?: number;
+  sku?: string;
+  stock?: number;
+  gender?: "men" | "women";
+};
+
+export type HexColors = {
+  _id: string;
+  _type: "hexColors";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hexCode?: string;
+  thumbnail?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
+export type Categories = {
+  _id: string;
+  _type: "categories";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  isFeatured?: boolean;
+  displayOrder?: number;
+};
+
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
+export type BrandsReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "brands";
+};
+
+export type CategoriesReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "categories";
+};
+
+export type Products = {
+  _id: string;
+  _type: "products";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  brand?: BrandsReference;
+  category?: Array<
+    {
+      _key: string;
+    } & CategoriesReference
+  >;
+  variants?: Array<
+    {
+      _key: string;
+    } & Variants
+  >;
+  description?: string;
+  stockQuantity?: number;
+  images?: Array<{
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
+  activeImage?: number;
+  thumbnails?: Array<{
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
+  reviewCount?: number;
+  rating?: number;
+  isNewArrival?: boolean;
+  isFeatured?: boolean;
+  isActive?: boolean;
+  isDark?: boolean;
+};
+
+export type Brands = {
+  _id: string;
+  _type: "brands";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  logo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  isFeatured?: boolean;
+  displayOrder?: number;
+};
+
 export type HomeBanner = {
   _id: string;
   _type: "homeBanner";
@@ -50,22 +212,6 @@ export type HomeBanner = {
   isActive?: boolean;
   isLeftAligned?: boolean;
   displayOrder?: number;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -165,17 +311,20 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
-
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | HomeBanner
+  | HexColorsReference
+  | Variants
+  | HexColors
   | SanityImageCrop
   | SanityImageHotspot
+  | Categories
+  | Slug
+  | BrandsReference
+  | CategoriesReference
+  | Products
+  | Brands
+  | HomeBanner
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -183,5 +332,73 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | SanityAssetSourceData
   | SanityImageAsset
-  | Geopoint
-  | Slug;
+  | Geopoint;
+
+// Source: lib/sanityQueries.ts
+// Variable: BANNERS_QUERY
+// Query: *[_type == "homeBanner" && isActive] | order(displayOrder)
+export type BANNERS_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "homeBanner";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  captionTitle?: string;
+  captionHeadingTitle?: string;
+  captionSubHeadingTitle?: string;
+  btnHref?: string;
+  desktopImg?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  mobileImg?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  isActive?: boolean;
+  isLeftAligned?: boolean;
+  displayOrder?: number;
+}>;
+
+// Source: lib/sanityQueries.ts
+// Variable: PRODUCTS_QUERY
+// Query: *[_type == "products"]{        _id,        title,        images,        activeImage,        isDark,        isNewArrival,        rating,        reviewCount,        variants[]{        price,        colorHexCode->{          hexCode        }        }}
+export type PRODUCTS_QUERY_RESULT = Array<{
+  _id: string;
+  title: string | null;
+  images: Array<{
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }> | null;
+  activeImage: number | null;
+  isDark: boolean | null;
+  isNewArrival: boolean | null;
+  rating: number | null;
+  reviewCount: number | null;
+  variants: Array<{
+    price: number | null;
+    colorHexCode: {
+      hexCode: string | null;
+    } | null;
+  }> | null;
+}>;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '*[_type == "homeBanner" && isActive] | order(displayOrder)': BANNERS_QUERY_RESULT;
+    '*[_type == "products"]{\n        _id,\n        title,\n        images,\n        activeImage,\n        isDark,\n        isNewArrival,\n        rating,\n        reviewCount,\n        variants[]{\n        price,\n        colorHexCode->{\n          hexCode\n        }\n        }\n\n}': PRODUCTS_QUERY_RESULT;
+  }
+}

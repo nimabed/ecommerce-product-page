@@ -4,6 +4,7 @@ import { products } from './products';
 import { brands } from './brands';
 import { categories } from './categories';
 import { variants } from './variants';
+import { hexColors } from './hexColors';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -11,6 +12,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     products,
     brands,
     categories,
-    variants
+    variants,
+    hexColors
   ],
 }

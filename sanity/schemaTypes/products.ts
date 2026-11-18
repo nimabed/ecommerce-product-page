@@ -26,7 +26,7 @@ export const products = defineType({
       title: "Brand",
       type: "reference",
       description: "Product brand",
-      to: [{type: "brands"}],
+      to: [{ type: "brands" }],
       validation: (Rule) => Rule.required()
     }),
     defineField({
@@ -35,9 +35,17 @@ export const products = defineType({
       type: "array",
       description: "Product category",
       of: [
-        {type: "reference", to: [{type: "categories"}]}
+        { type: "reference", to: [{ type: "categories" }] }
       ],
       validation: (Rule) => Rule.required()
+    }),
+    defineField({
+      name: "variants",
+      title: "Product variant",
+      type: "array",
+      of: [
+        { type: "variants" }
+      ]
     }),
     defineField({
       name: "description",
@@ -58,8 +66,15 @@ export const products = defineType({
       type: "array",
       description: "Main product images",
       of: [
-        defineArrayMember({type: "image"})
+        defineArrayMember({ type: "image" })
       ],
+      validation: (Rule) => Rule.required()
+    }),
+    defineField({
+      name: "activeImage",
+      title: "Cover image",
+      type: "number",
+      description: "Number of the image that use for cover",
       validation: (Rule) => Rule.required()
     }),
     defineField({
@@ -68,17 +83,49 @@ export const products = defineType({
       type: "array",
       description: "Product thumbnails",
       of: [
-        defineArrayMember({type: "image"})
+        defineArrayMember({ type: "image" })
       ],
       validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: "variants",
-      title: "Product variant",
-      type: "array",
-      of: [
-        {type: "variants"}
-      ]
+      name: "reviewCount",
+      title: "Review count",
+      type: "number",
+      description: "Number of reviews"
+    }),
+    defineField({
+      name: "rating",
+      title: "Rating",
+      type: "number",
+      description: "Average customer rating"
+    }),
+    defineField({
+      name: "isNewArrival",
+      title: "New arrival",
+      type: "boolean",
+      description: "Does product newly added?",
+      initialValue: false,
+    }),
+    defineField({
+      name: "isFeatured",
+      title: "Featured product",
+      type: "boolean",
+      description: "Is product featured?",
+      initialValue: false,
+    }),
+    defineField({
+      name: "isActive",
+      title: "Active",
+      type: "boolean",
+      description: "Is product active?",
+      initialValue: false,
+    }),
+    defineField({
+      name: "isDark",
+      title: "Dark background",
+      type: "boolean",
+      description: "Does product's image has dark background?",
+      initialValue: false,
     })
   ]
 })
