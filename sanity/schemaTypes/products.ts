@@ -107,6 +107,13 @@ export const products = defineType({
       description: "Average customer rating"
     }),
     defineField({
+      name: "isDark",
+      title: "Dark background",
+      type: "boolean",
+      description: "Does product's image has dark background?",
+      validation: (Rule) => Rule.required()
+    }),
+    defineField({
       name: "isNewArrival",
       title: "New arrival",
       type: "boolean",
@@ -121,6 +128,13 @@ export const products = defineType({
       initialValue: false,
     }),
     defineField({
+      name: "isBestSeller",
+      title: "Best seller product",
+      type: "boolean",
+      description: "Does product on best sales?",
+      initialValue: false,
+    }),
+    defineField({
       name: "isActive",
       title: "Active",
       type: "boolean",
@@ -128,11 +142,12 @@ export const products = defineType({
       initialValue: false,
     }),
     defineField({
-      name: "isDark",
-      title: "Dark background",
-      type: "boolean",
-      description: "Does product's image has dark background?",
-      initialValue: false,
+      name: "displayOrder",
+      title: "Display order",
+      type: "number",
+      description: "The order of product display",
+      initialValue: 0
     })
+
   ]
 })

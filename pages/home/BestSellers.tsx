@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { Image } from 'next-sanity/image';
 import { ArrowRight } from 'lucide-react';
 import Ranking from '../../components/ui/ranking';
+import { getBestSellers } from '@/lib/sanityFunctions';
+import { urlFor } from '@/sanity/lib/image'
 
 
 const bestSellers = [
@@ -36,7 +38,15 @@ const bestSellers = [
 ]
 
 
-export default function BestSellers() {
+export default async function BestSellers() {
+
+  const bestSellerProducts = await getBestSellers();
+
+  if(!bestSellerProducts) {
+    return <h1>Fetching best sellers failed</h1>
+  }
+
+
   return (
     <div className="">
       <div className="flex items-center justify-between mb-3">
@@ -48,28 +58,35 @@ export default function BestSellers() {
       </div>
       <div className="flex flex-col gap-4 md:flex-row md:justify-between">
         {
-          bestSellers.map(item =>
-            <Link key={item.title} href="#" className="w-full">
+          bestSellerProducts?.map((product) => {
+
+            const price = product.variants && product.variants[0].price;
+
+           return (
+           <Link key={product.title} href="#" className="w-full">
               <div className="group w-full flex items-center gap-4">
-                <div className="w-full max-w-30 h-20 rounded-lg overflow-hidden md:h-25 md:shrink-0">
-                  <Image
-                    className="size-full object-cover card-hover-effect"
-                    src={item.image}
-                    alt="Best sell image product"
-                    width={250}
-                    height={100}
-                  />
+                <div className="relative w-full max-w-30 h-20 rounded-lg overflow-hidden md:h-25 md:shrink-0">
+                  {(product.images && product.activeImage) && (
+                    <Image
+                      className="size-full object-cover card-hover-effect"
+                      src={urlFor(product.images[product.activeImage - 1]).url()}
+                      alt="Best sell image product"
+                      fill
+                    />
+                  )}
                 </div>
                 <div className="flex flex-col text-nowrap">
-                  <h4 className="font-bold md:text-lg">{item.title}</h4>
-                  <span className="font-medium md:text-lg">{item.price}</span>
+                  <h4 className="font-bold md:text-lg">{product.title}</h4>
+                  <span className="font-medium md:text-lg">${price?.toFixed(2)}</span>
                   <div className="flex items-center gap-2">
-                    <Ranking ranking={item.rank} />
-                    <span className="text-xs font-medium text-dark-grayish-blue md:text-sm">({item.vote})</span>
+                    {product.rating && <Ranking ranking={product.rating} />}
+                    <span className="text-xs font-medium text-dark-grayish-blue md:text-sm">({product.reviewCount})</span>
                   </div>
                 </div>
               </div>
             </Link>
+            )
+          }
           )
         }
       </div>

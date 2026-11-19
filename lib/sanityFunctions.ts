@@ -4,6 +4,7 @@ import { type HomeBanner } from '@/sanity.types';
 import { PRODUCTS_QUERY } from './sanityQueries';
 import { type product } from '@/sanity/manualTypes';
 import { NEWPRODUCTS_QUERY } from './sanityQueries';
+import { BESTSELLERS_QUERY } from './sanityQueries';
 
 export async function getBanners():Promise<HomeBanner[] | null> {
 
@@ -35,6 +36,18 @@ export async function getNewProducts():Promise<product[] | null> {
     return newProducts;
   }catch(error) {
     console.error('Fetching new products failed: ', error);
+  }
+
+  return null;
+}
+
+
+export async function getBestSellers():Promise<product[] | null> {
+  try{
+    const bestSellers = await client.fetch(BESTSELLERS_QUERY);
+    return bestSellers;
+  }catch(error) {
+    console.error("Fetching best sellers product failed: ", error);
   }
 
   return null;

@@ -15,35 +15,6 @@ import { urlFor } from '@/sanity/lib/image';
 import { cn } from '@/lib/utils';
 
 
-
-const freshPicks = [
-  {
-    image: "/image-product-1.jpg",
-    title: "Fall Limited Edition",
-    price: "$125.00"
-  },
-  {
-    image: "/image-product-2.jpg",
-    title: "Essential Low",
-    price: "$110.00"
-  },
-  {
-    image: "/image-product-3.jpg",
-    title: "Urben Retro",
-    price: "$130.00"
-  },
-  {
-    image: "/image-product-4.jpg",
-    title: "Court Classic",
-    price: "$106.00"
-  },
-  {
-    image: "/image-product-4.jpg",
-    title: "Court modern",
-    price: "$106.00"
-  }
-]
-
 export default async function NewArrivals() {
 
   const newProducts = await getNewProducts(); 
@@ -76,14 +47,13 @@ export default async function NewArrivals() {
                   {/* Cards */}
                   <Link href="#">
                     <Card className="group w-full ring-0 pt-0 bg-dark-grayish-blue/10">
-                      <div className="relative rounded-lg overflow-hidden">
+                      <div className="relative rounded-lg overflow-hidden w-full h-36 md:h-76">
                         {(product.images && product.activeImage) && (
                           <Image 
                             className="size-full card-hover-effect"
                             src={urlFor(product.images[product.activeImage - 1]).url()} 
                             alt="shoe image" 
-                            width={200} 
-                            height={200} 
+                            fill
                           />)
                         }
                         <Heart 
