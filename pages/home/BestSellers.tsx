@@ -6,38 +6,6 @@ import { getBestSellers } from '@/lib/sanityFunctions';
 import { urlFor } from '@/sanity/lib/image'
 
 
-const bestSellers = [
-  {
-    image: "/image-product-1.jpg",
-    title: "Classic Runner",
-    price: "$125.00",
-    rank: 4.4,
-    vote: 245
-  },
-  {
-    image: "/image-product-2.jpg",
-    title: "Street Icon",
-    price: "$110.00",
-    rank: 4.5,
-    vote: 312
-  },
-  {
-    image: "/image-product-3.jpg",
-    title: "Comfy Everyday",
-    price: "$130.00",
-    rank: 4.7,
-    vote: 198
-  },
-  {
-    image: "/image-product-4.jpg",
-    title: "All Day Walk",
-    price: "$106.00",
-    rank: 4.5,
-    vote: 267
-  }
-]
-
-
 export default async function BestSellers() {
 
   const bestSellerProducts = await getBestSellers();

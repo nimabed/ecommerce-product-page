@@ -2,9 +2,11 @@ import { groq } from 'next-sanity';
 
 export const BANNERS_QUERY = groq`*[_type == "homeBanner" && isActive] | order(displayOrder)`;
 
+
 export const PRODUCTS_QUERY = (
   groq`*[_type == "products"]{
         _id,
+        slug,
         title,
         images,
         activeImage,
@@ -46,3 +48,4 @@ export const BESTSELLERS_QUERY = (
     }
   }`
 )
+

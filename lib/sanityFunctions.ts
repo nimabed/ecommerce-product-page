@@ -1,4 +1,5 @@
 import { client } from '@/sanity/lib/client';
+import { groq } from 'next-sanity';
 import { BANNERS_QUERY } from './sanityQueries';
 import { type HomeBanner } from '@/sanity.types';
 import { PRODUCTS_QUERY } from './sanityQueries';
@@ -18,6 +19,37 @@ export async function getBanners():Promise<HomeBanner[] | null> {
   return null;
 
 }
+
+export async function getProduct(slug: string):Promise<product | null> {
+  const PRODUCT_QUERY = (
+    groq`*[_type == "products" && slug.current == "${slug}"]{
+      _id,
+      title,
+      description,
+      images,
+      thumbnails,
+      activeImage,
+      brand->{
+        name
+      },
+      variants[]{
+        price,
+        originalPrice
+      }
+    }`
+  );
+
+  try{
+    const product = await client.fetch(PRODUCT_QUERY);
+    return product[0];
+  }catch(error) {
+    console.error("Fetching product failed: ", error);
+  }
+
+  return null;
+}
+
+
 
 export async function getProducts():Promise<product[] | null> {
   try{

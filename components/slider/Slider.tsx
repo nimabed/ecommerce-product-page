@@ -1,33 +1,42 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import Image from "next/image";
+import { Image } from "next-sanity/image";
+import { urlFor } from '@/sanity/lib/image';
+import { type SanityImageAssetReference } from '@/sanity.types';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import LightBoxButton from './LightBoxButton';
 import LightBox from './LightBox';
 
 
-type images = {src: string, alt: string, thumbnail: string}[];
+// type images = {src: string, alt: string, thumbnail: string}[];
 
-
-export default function Slider({ sliderImages }:{
-  sliderImages: images
+type props = {
+  images: {_key: string, _type: "image", asset?: SanityImageAssetReference}[] | undefined;
+  thumbnails: {_key: string, _type: "image", asset?: SanityImageAssetReference}[] | undefined;
 }
-) {
+
+
+export default function Slider({ images, thumbnails }: props) {
 
   const [currentActiveIndex, setCurrentActiveIndex] = useState(1);
   const [isModalActive, setIsModalActive] = useState(false);
 
   const handleNextImage = () => {
-    const isLast = currentActiveIndex === sliderImages.length - 1;
-    const index = isLast ? 0 : currentActiveIndex + 1;
-    setCurrentActiveIndex(index);
+    if(images) {
+      const isLast = currentActiveIndex === images.length - 1;
+      const index = isLast ? 0 : currentActiveIndex + 1;
+      setCurrentActiveIndex(index);
+    }
   }
 
   const handlePreviousImage = () => {
-    const isFirst = currentActiveIndex === 0;
-    const index = isFirst ? sliderImages.length - 1 : currentActiveIndex - 1;
-    setCurrentActiveIndex(index); 
+    if(images) {
+      const isFirst = currentActiveIndex === 0;
+      const index = isFirst ? images.length - 1 : currentActiveIndex - 1;
+      setCurrentActiveIndex(index); 
+    }
   }
 
   const handleCloseModal = useCallback(() => {
@@ -38,12 +47,14 @@ export default function Slider({ sliderImages }:{
   return (
     <section className="w-full md:max-w-[70%]">
       <div className="relative h-75 md:h-125">
-        <Image 
-          className="object-cover md:rounded-xl"
-          src={sliderImages[currentActiveIndex].src}
-          alt={sliderImages[currentActiveIndex].alt}
-          fill
-        />
+        {images && (
+          <Image 
+            className="object-cover md:rounded-xl"
+            src={urlFor(images[currentActiveIndex]).url()}
+            alt="Product image"
+            fill
+          />
+        )}
         
         <LightBoxButton
           key={currentActiveIndex} 
@@ -51,36 +62,26 @@ export default function Slider({ sliderImages }:{
           openModal={() => setIsModalActive(true)}
           closeModal={handleCloseModal}
         >
-          <LightBox sliderImages={sliderImages} activeId={currentActiveIndex} closeModal={() => setIsModalActive(false)} />
+          <LightBox images={images} thumbnails={thumbnails} activeId={currentActiveIndex} closeModal={() => setIsModalActive(false)} />
         </LightBoxButton>
 
         <button 
           className="absolute w-10 h-10 flex justify-center items-center bg-white right-4 top-1/2 -translate-y-1/2 rounded-full p-3 cursor-pointer md:hidden"
           onClick={handleNextImage}
         >
-          <Image 
-            src="/icon-next.svg" 
-            alt="next icon image" 
-            width={12}
-            height={12}
-          />
+          <ChevronRight />
+
         </button>
         <button 
           className="absolute w-10 h-10 flex justify-center items-center bg-white left-4 top-1/2 -translate-y-1/2 rounded-full p-3 cursor-pointer md:hidden"
           onClick={handlePreviousImage}
         >
-          <Image 
-            className="mr-1"
-            src="/icon-previous.svg" 
-            alt="next icon image" 
-            width={11}
-            height={11}
-          />
+          <ChevronLeft />
         </button>
       </div>
       <ul className="hidden flex-row space-x-7 mt-7  md:flex">
         {
-          sliderImages.map(
+          thumbnails?.map(
             (imageItem, imageIndex) => {
 
               const activeClass = "bg-white/75 opacity-100 ring-3 ring-primary/80";
@@ -94,10 +95,10 @@ export default function Slider({ sliderImages }:{
                   >
                     <Image 
                       className="object-cover rounded-lg"
-                      src={imageItem.thumbnail} 
-                      alt={imageItem.alt}
+                      src={urlFor(imageItem).url()} 
+                      alt="Product thumbnail"
                       fill 
-                      />
+                    />
                     <div className={`absolute inset-0 rounded-lg ${imageIndex === currentActiveIndex ? activeClass : notActiveClass }`} />
                   </button>
                 </li>
