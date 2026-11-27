@@ -12,9 +12,9 @@ type props = {
 
 export default async function ProductPage({ params }: props) {
 
-  const paramsObject = await params;
+  const { slug } = await params;
 
-  const slugProduct = await getProduct(paramsObject.slug);
+  const slugProduct = await getProduct(slug);
 
   if(!slugProduct) {
     return <h1>Product not found!</h1>

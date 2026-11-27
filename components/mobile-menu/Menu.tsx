@@ -1,6 +1,7 @@
-import Link from 'next/link';
+// import Link from 'next/link';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import NavLinks from '../NavLinks';
 
 type menuProps = {
   isClosing: boolean,
@@ -21,15 +22,17 @@ export default function MenuContent({ isClosing, onClose }: menuProps) {
         <X className="size-6" />
       </button>
 
-      <nav>
+      <NavLinks isMobile={true} />
+
+      {/* <nav>
         <ul className="flex flex-col items-start space-y-5 font-semibold">
-          <li className="hover:underline hover:underline-offset-8"><Link href='#'>Collections</Link></li>
+          <li className="hover:underline hover:underline-offset-8"><Link href='/products'>Collections</Link></li>
           <li className="hover:underline hover:underline-offset-8"><Link href='#'>Men</Link></li>
           <li className="hover:underline hover:underline-offset-8"><Link href='#'>Women</Link></li>
           <li className="hover:underline hover:underline-offset-8"><Link href='#'>About</Link></li>
           <li className="hover:underline hover:underline-offset-8"><Link href='#'>Contact</Link></li>
         </ul>
-      </nav>
+      </nav> */}
     </div>
   )
 }

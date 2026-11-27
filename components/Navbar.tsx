@@ -6,6 +6,7 @@ import Container from '@/components/ui/container';
 import MenuButton from './mobile-menu/MenuButton';
 import CartButton from './cart/CartButton';
 import CartModal from './cart/CartModal';
+import NavLinks from './NavLinks';
 
 export default function Navbar() {
   return (
@@ -19,13 +20,18 @@ export default function Navbar() {
             <Link href='/'>
               <Image src='/logo.svg' alt='logo image' width={140} height={140} />
             </Link>
+            
             {/* Nav Links */}
-            <nav className="hidden ml-10 md:block">
+
+            <NavLinks isMobile={false} />
+
+
+            {/* <nav className="hidden ml-10 md:block">
               <ul className="flex space-x-8 items-center text-dark-grayish-blue">
                 <li 
                   className="relative nav-link-effect"
                 >
-                  <Link href='/collections'>Collections</Link>
+                  <Link href='/products'>Collections</Link>
                 </li>
                 <li
                   className="relative nav-link-effect"
@@ -48,7 +54,7 @@ export default function Navbar() {
                   <Link href='/contact'>Contact</Link>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
           </div>
           {/* Icons */}
           <div className="flex items-center gap-1 md:gap-5 md:pr-4">
